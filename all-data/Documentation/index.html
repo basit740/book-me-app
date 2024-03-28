@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!--SEO Meta Tags-->
+	<meta charset="utf-8" />
+	<!-- SITE TITLE -->
+	<title>Tulsy - Responsive Bootstrap 5 Landing Page Template</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta content="Responsive Bootstrap Multi-Purpose Landing Page Template" name="description" />
+	<meta name="keywords" content="Landing, Bootstrap, Landing page, Template, Registration, Landing">
+	<meta content="Themesdesign" name="author" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<!-- Google-Fonts -->
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800">
+
+	<!-- Bootstrap Core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="css/prettify.css" />
+
+	<!-- Custom CSS -->
+	<link href="css/styles.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-default fixed-top">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="mx-auto">
+				<a class="logo text-decoration-none" href="#">Tulsy Documentation</a>
+			</div>
+		</div><!-- /.container-fluid -->
+	</nav>
+
+	<div id="wrapper">
+
+		<!-- Sidebar -->
+		<div id="sidebar-wrapper">
+			<ul class="sidebar-nav">
+				<li>
+					<a href="#intro">Introduction</a>
+				</li>
+				<li>
+					<a href="#structure">Structure</a>
+				</li>
+				<li>
+					<a href="#routing">Routing</a>
+				</li>
+				<li>
+					<a href="#plugins">Plugins</a>
+				</li>
+				<li>
+					<a href="#support">Support</a>
+				</li>
+				<li>
+					<a href="#changelog">Changelog</a>
+				</li>
+			</ul>
+		</div>
+		<!-- /#sidebar-wrapper -->
+
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="right-bar">
+
+							<div class="com-container">
+
+								<div id="intro">
+									<h6 class="page-header">Thank you for your support and interest! However, please
+										note that as an AI language model, I am unable to process purchases or provide
+										tangible products or services. My purpose is to offer information, guidance, and
+										assistance through text-based conversations. If you have any other inquiries or
+										require additional help, please don't hesitate to ask! </h6>
+
+									<div class="p-t-20">
+										<div class="alert alert-info">
+											<p>If you have any questions or need further assistance that is not covered
+												in this documentation, please don't hesitate to reach out to us. You can
+												contact us by email or through the contact page on our website. We are
+												here to help and will be happy to address any inquiries or concerns you
+												may have.</p>
+										</div>
+									</div>
+								</div>
+
+								<h4 class="page-header">Introduction</h4>
+
+								<p>Tulsy is a highly flexible and feature-rich Bootstrap 5 landing page template. With
+									its responsive design and 11 unique demo variations, it caters to a wide range of
+									needs, whether you&apos;re showcasing a product, service, marketing campaign, app,
+									or SaaS solution. Built on the latest version of Bootstrap (v5.3.2), Tulsy ensures
+									compatibility and offers easy customization options to tailor the template to your
+									specific requirements. Its versatility and adaptability make it an ideal choice for
+									creating professional and visually appealing landing pages.
+								</p>
+
+								<p>We have added different types of Swipers and Carousels in Tulsy.</p>
+
+								<p>
+									Please feel free to get back to me in case if you are having any question or
+									feedback.
+								</p>
+
+
+
+								<div id="structure" class="com-container">
+									<h4 class="page-header">Structure</h4>
+									<p>I have tried to follow the standards and modular structure while developing the
+										theme. Following sections are explaining the theme File &amp; Folder, structure,
+										html file struture and plugins.</p>
+
+									<div class="row p-t-20">
+										<div class="col-sm-12">
+											<h4>File &amp; Folder Structure</h4>
+											<hr />
+
+											<pre class="prettyprint ">
+
+├── React files
+├── public/
+│   └── css 
+|        └── All css files.
+├── src/
+│   ├── assets
+│   │	 ├── fonts
+│   │	 ├── images
+│   │	 └── scss
+│   ├── components
+│   │	 └── All the common files.
+│   ├── layout
+│   ├── pages
+│   ├── Routes // all the routes.
+│   ├── App.tsx
+│   └── index.tsx
+├── package.json
+├── tsconfig.json
+├── .env
+└── yarn.lock
+
+</pre>
+
+
+											<div class="row mt-5">
+												<div class="col-sm-12">
+													<h4>Installation</h4>
+													<hr />
+													<p class="m-t-20">Installation is described here.</p>
+													<table class="table table-bordered m-0 mb-3">
+														<tr>
+															<td>
+																<code>yarn</code>
+															</td>
+															<td>Yarn can be used as a package manager to handle
+																dependencies and manage the project's development
+																environment.</td>
+														</tr>
+														<tr>
+															<td>
+																<code>yarn start</code>
+															</td>
+															<td>Yarn start can be used to run the project on
+																http://localhost:3000 .</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+
+											<div id="react-structure">
+												<div class="row mt-5">
+													<div class="col-sm-12 p-t-30">
+														<h4>React Structure</h4>
+														<hr />
+														<p>
+
+														<pre class="bg-dark" style="color: white;">
+
+  import React from 'react';
+  import Routing from './Routes';															
+  														
+  function App() {
+    return (
+       &lt;React.Fragment&gt;
+  	    &lt;Routing /&gt;
+       &lt;/React.Fragment&gt;
+     );
+  }
+  														
+  export default App;
+
+													
+													</pre>
+														</p>
+													</div>
+												</div>
+											</div>
+
+											<div class="row mt-3">
+												<div class="col-sm-12 p-t-30">
+													<h4>CSS</h4>
+													<hr />
+
+													<p class="m-t-20">Files are explained below: </p>
+
+													<table class="table table-bordered m-0 ">
+														<thead>
+															<tr>
+																<th style="width: 20%;"><i class="ti-file"></i> File
+																</th>
+																<th>Description</th>
+															</tr>
+														</thead>
+														<!-- end thead -->
+														<tbody>
+															<tr>
+																<td>
+																	<code>bootstrap.min.css</code>
+																</td>
+																<td>
+																	Tulsy uses the bootstrap v5.3.2. The core bootstrap
+																	file is being used in all the pages.
+																</td>
+															</tr>
+															<!-- end tr -->
+															<tr>
+																<td>
+																	<code>style.css</code>
+																</td>
+																<td>
+																	This file is containing all common styles for all
+																	the pages.
+																</td>
+															</tr>
+															<!-- end tr -->
+														</tbody>
+													</table>
+													<!-- end table -->
+												</div>
+											</div>
+											<!-- end -->
+										</div>
+										<!-- end col -->
+
+
+
+										<!-- end col -->
+									</div>
+									<div class="row mt-5">
+										<div class="col-sm-12 p-t-30">
+											<div id="routing">
+												<h4>Routing</h4>
+												<hr />
+												<p>Tulsy React is having routing setup based on React-Router.</p>
+												<p>You can find our template's router configuration in
+													<code>src/Routes</code> folder. the
+													<code>src/Routes/allRoutes.tsx</code> file is containing all routes
+													of our template.
+												</p>
+												<p><strong>Note</strong> : All private & public routes are rendered in
+													<code>src/App.tsx</code> file.
+												</p>
+
+												<h5 class="page-header">How to add new route ?</h5>
+												<p>You can easily add, change or remove any route by simply making
+													changes described below:</p>
+												<p>1. Open <code>src/Routes/allRoutes.tsx</code> file, declare your
+													component. E.g.
+												</p>
+												<pre class="bg-dark" style="color: white;">
+
+ import newPage from "../pages/newPage"
+													</pre>
+												<p>2. If your page is a private page (with
+													full layout) then add route in routes. E.g.
+												</p>
+
+												<pre class="bg-dark" style="color: white;">
+
+ { path: "/new-page", component: &lt;newPage /> }  
+												</pre>
+
+												<p>Each of these properties are explained below:</p>
+												<ul>
+													<li><strong>path</strong> : Url relative path</li>
+													<li>
+														<strong>component</strong> : Actual component
+														name which would get rendered when user visits
+														the path
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+
+									<div id="plugins">
+										<div class="row mt-5">
+											<div class="col-sm-12 p-t-30">
+												<h4>React Plugins</h4>
+												<hr />
+												<p>Here is the list of Plugins which helped us to make admin better.
+												</p>
+												<pre class="bg-dark" style="color: white;">
+
+  {
+ 	"name": "tulsy",
+ 	"version": "0.1.0",
+ 	"private": true,
+ 	"dependencies": {
+ 	  "@testing-library/jest-dom": "^5.14.1",
+ 	  "@testing-library/react": "^13.0.0",
+ 	  "@testing-library/user-event": "^13.2.1",
+ 	  "@types/jest": "^27.0.1",
+ 	  "@types/node": "^16.7.13",
+ 	  "@types/react": "^18.0.0",
+ 	  "@types/react-dom": "^18.0.0",
+ 	  "bootstrap": "^5.3.2",
+ 	  "react": "^18.2.0",
+ 	  "react-bootstrap": "^2.7.4",
+ 	  "react-countup": "^6.4.2",
+ 	  "react-dom": "^18.2.0",
+ 	  "react-router-dom": "^6.13.0",
+ 	  "react-scripts": "^5.0.1",
+ 	  "react-scrollspy": "^3.4.3",
+ 	  "sass": "^1.63.4",
+ 	  "swiper": "^9.4.1",
+ 	  "typescript": "5.3.2",
+ 	  "typewriter-effect": "^2.20.1",
+ 	  "web-vitals": "^2.1.0"
+ 	},
+ 	"scripts": {
+ 	  "start": "react-scripts start",
+ 	  "build": "react-scripts build",
+ 	  "test": "react-scripts test",
+ 	  "eject": "react-scripts eject"
+ 	},
+ 	"eslintConfig": {
+ 	  "extends": [
+ 		"react-app",
+ 		"react-app/jest"
+ 	  ]
+ 	},
+ 	"browserslist": {
+ 	  "production": [
+ 		">0.2%",
+ 		"not dead",
+ 		"not op_mini all"
+ 	  ],
+ 	  "development": [
+ 		"last 1 chrome version",
+ 		"last 1 firefox version",
+ 		"last 1 safari version"
+ 	  ]
+ 	},
+ 	"devDependencies": {
+ 	  "@types/react-modal-video": "^1.2.0"
+ 	}
+  }
+													  
+												</pre>
+											</div>
+										</div>
+									</div>
+
+									<div id="support">
+										<h4 class="page-header">Support</h4>
+										<p class="m-t-20">
+											Thank you once again for your purchase! Your satisfaction is important to
+											me, and I'm here to assist you with any inquiries related to the theme.
+										</p>
+										<p>We value your suggestions and feedback. If you have any ideas for new
+											features
+											or improvements, please don't hesitate to contact me. I'm committed to
+											continuously enhancing the theme, and I'll make every effort to incorporate
+											your suggestions into future updates. Your input plays a crucial role in
+											making the theme even better. Feel free to reach out to me, and I'll be
+											delighted to discuss your ideas and work towards implementing them.</p>
+
+										<p>
+											Stay Awesome!
+										</p>
+
+										<p class="text-primary">
+											- <strong>Themesdesign</strong>
+										</p>
+									</div>
+
+									<div id="changelog">
+										<h4 class="page-header">Changelog</h4>
+										<p style="margin-top: 20px;"><span
+												style="text-decoration: underline; font-weight: 600;">Version 1.0.0
+											</span> &nbsp;&nbsp;&nbsp;<small class="text-muted"> 6 Dec, 2023</small>
+										</p>
+
+										<ul>
+											<li>
+												Initial released
+											</li>
+										</ul>
+									</div>
+
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /#page-content-wrapper -->
+
+				<div class="text-center">
+					<p class="copy">Copyright ©
+						<script>document.write(new Date().getFullYear())</script> Themesdesign.
+					</p>
+				</div>
+			</div>
+			<!-- /#wrapper -->
+
+			<!-- jQuery -->
+			<script src="js/jquery.js"></script>
+
+			<!-- Bootstrap Core JavaScript -->
+			<script src="js/bootstrap.min.js"></script>
+
+			<script src="js/jquery.easing.min.js"></script>
+
+			<script type="text/javascript" src="js/prettify.js"></script>
+
+			<!-- Menu Toggle Script -->
+			<script>
+
+				//jQuery for page scrolling feature - requires jQuery Easing plugin
+				$(function () {
+					$('.sidebar-nav a').bind('click', function (event) {
+						var $anchor = $(this);
+						$('html, body').stop().animate({
+							scrollTop: $($anchor.attr('href')).offset().top - 100
+						}, 1500, 'easeInOutExpo');
+						event.preventDefault();
+					});
+				});
+			</script>
+
+</body>
+
+</html>
