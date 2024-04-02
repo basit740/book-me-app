@@ -9,6 +9,7 @@ import Partners from "./pages/Partners";
 import Properties from "./pages/Properties";
 import Subscribe from "./pages/Subscribe";
 
+import MyCalendar from "./components/calander/Calander";
 function App() {
   return (
     <>
@@ -21,6 +22,7 @@ function App() {
         <Developers />
         <Join />
         <Subscribe />
+        <MyCalendar />
         <Footer />
       </BrowserRouter>
     </>
