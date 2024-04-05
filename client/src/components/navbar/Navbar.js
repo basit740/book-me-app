@@ -10,8 +10,8 @@ function NavBar() {
   return (
     <Navbar expand="lg" className="py-3">
       <Container>
-        <Navbar.Brand href="#" className="me-lg-5">
-          <img className="logo" src={logo} alt="logo" />
+        <Navbar.Brand href="/" className="me-lg-5 text-white">
+          Book
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -21,6 +21,7 @@ function NavBar() {
               About Us
             </Nav.Link>
             <Nav.Link href="#action1">Developers</Nav.Link>
+            <Nav.Link href="/calendar">Calendar</Nav.Link>
           </Nav>
         </Navbar.Collapse>
         <div className="d-flex align-items-center order">
@@ -30,7 +31,7 @@ function NavBar() {
             variant="primary"
             className="btn-primary d-none d-lg-inline-block"
           >
-            Connect Wallet
+            Book
           </Button>
         </div>
       </Container>
