@@ -38,6 +38,8 @@ export const MyCalendar = () => {
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
   const [showTimeTable, setShowTimeTable] = useState(false);
+  const [openEvent, setOpenEvent] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -113,8 +115,15 @@ export const MyCalendar = () => {
                 </div>
               </ListGroup.Item>
               {group.events.map((event, index) => (
-                <ListGroup.Item key={index}>
-                  <div className="d-flex gap-5 text-secondary align-items-center my-3 cursor-pointer">
+                <ListGroup.Item
+                  key={index}
+                  onClick={() => {
+                    setOpenEvent(true);
+                    setSelectedEvent(event);
+                  }}
+                  className="list-item"
+                >
+                  <div className="d-flex gap-5 text-secondary align-items-center my-3">
                     {moment(event.startDate).format("HH:mm")} -{" "}
                     {moment(event.endDate).format("HH:mm")}
                     <div className="d-flex gap-2 align-items-center">
@@ -231,6 +240,35 @@ export const MyCalendar = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+      {selectedEvent && (
+        <Modal show={openEvent} onHide={() => setOpenEvent(false)}>
+          <Modal.Header closeButton>
+            <Modal.Title>Detail Booking</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <div className="d-flex align-items-center gap-5">
+              <div>
+                <strong>Booking Date</strong>
+                <p className="text-secondary">
+                  {moment(selectedEvent.startDate).format("dddd, MMMM D, YYYY")}
+                </p>
+              </div>
+              <div>
+                <strong>Time Period</strong>
+                <p className="text-secondary">
+                  {moment(selectedEvent.startDate).format("HH:mm")} -{" "}
+                  {moment(selectedEvent.endDate).format("HH:mm")}
+                </p>
+              </div>
+            </div>
+            <hr />
+            <div>
+              <strong>Team Name</strong>
+              <p className="text-secondary">{selectedEvent.title}</p>
+            </div>
+          </Modal.Body>
+        </Modal>
+      )}
     </div>
   );
 };
