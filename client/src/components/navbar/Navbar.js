@@ -31,7 +31,7 @@ function NavBar() {
             variant="primary"
             className="btn-primary d-none d-lg-inline-block"
           >
-            Connect Wallet
+            Book
           </Button>
         </div>
       </Container>
