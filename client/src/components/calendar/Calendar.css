@@ -26,12 +26,12 @@
 }
 
 .event-cell {
-  background-color: #0f6efd;
+  background-color: #085f34;
   color: white;
 }
 
 .fc .fc-highlight {
-  background-color: #0f6efd;
+  background-color: #085f34;
   color: white;
   border-radius: 10px;
 }
@@ -68,4 +68,8 @@
 .list-item:hover {
   background-color: rgb(223, 223, 223);
   cursor: pointer;
+}
+
+.fc .fc-timegrid-slot {
+  height: 60px;
 }

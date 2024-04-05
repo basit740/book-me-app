@@ -10,8 +10,8 @@ function NavBar() {
   return (
     <Navbar expand="lg" className="py-3">
       <Container>
-        <Navbar.Brand href="/" className="me-lg-5">
-          <img className="logo" src={logo} alt="logo" />
+        <Navbar.Brand href="/" className="me-lg-5 text-white">
+          Book
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">

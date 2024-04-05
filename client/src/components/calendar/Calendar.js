@@ -9,26 +9,26 @@ import moment from "moment";
 
 import "./Calendar.css";
 
-const events = [
+const eventsData = [
   {
     title: "Test Event 1",
-    startDate: "2024-10-04T20:24:30+00:00",
-    endDate: "2024-10-04T21:24:30+00:00",
+    start: "2024-10-04T20:24:30+00:00",
+    end: "2024-10-04T21:24:30+00:00",
   },
   {
     title: "Test Event 2",
-    startDate: "2024-10-04T17:24:30+00:00",
-    endDate: "2024-10-04T18:24:30+00:00",
+    start: "2024-10-04T17:24:30+00:00",
+    end: "2024-10-04T18:24:30+00:00",
   },
   {
     title: "Test Event 3",
-    startDate: "2024-11-04T20:24:30+00:00",
-    endDate: "2024-11-04T21:24:30+00:00",
+    start: "2024-11-04T20:24:30+00:00",
+    end: "2024-11-04T21:24:30+00:00",
   },
   {
     title: "Test Event 4",
-    startDate: "2024-12-04T20:24:30+00:00",
-    endDate: "2024-12-04T21:24:30+00:00",
+    start: "2024-12-04T20:24:30+00:00",
+    end: "2024-12-04T21:24:30+00:00",
   },
 ];
 
@@ -40,6 +40,10 @@ export const MyCalendar = () => {
   const [showTimeTable, setShowTimeTable] = useState(false);
   const [openEvent, setOpenEvent] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [name, setName] = useState(null);
+  const [approve, setApprove] = useState(false);
+  const [eventData, setEventData] = useState(null);
+  const [events, setEvents] = useState(eventsData);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -48,11 +52,12 @@ export const MyCalendar = () => {
     setDate(moment(arg.startStr).format("DD-MM-YYYY"));
     setStartTime(moment(arg.startStr).format("HH:mm"));
     setEndTime(moment(arg.endStr).format("HH:mm"));
+    setEventData(arg);
     handleShow();
   };
 
   const groups = events.reduce((groups, game) => {
-    const date = game.startDate.split("T")[0];
+    const date = game.start.split("T")[0];
     if (!groups[date]) {
       groups[date] = [];
     }
@@ -66,6 +71,31 @@ export const MyCalendar = () => {
       events: groups[date],
     };
   });
+
+  const onSubmit = () => {
+    const message = `BookingDate: ${date}
+  BookingTime: ${startTime} - ${endTime}
+  Name: ${name}
+    `;
+    const newEvent = [...events];
+    newEvent.push({
+      title: name,
+      start: eventData.startStr,
+      end: eventData.endStr,
+    });
+    setEvents(newEvent);
+    handleClose();
+    let number = "+995595781144".replace(/[^\w\s]/gi, "").replace(/ /g, "");
+
+    // Appending the phone number to the URL
+    let url = `https://web.whatsapp.com/send?phone=${number}`;
+
+    // Appending the message to the URL by encoding it
+    url += `&text=${encodeURI(message)}&app_absent=0`;
+
+    // Open our newly created URL in a new tab to send the message
+    window.open(url);
+  };
 
   return (
     <div className="calendar-container">
@@ -93,16 +123,15 @@ export const MyCalendar = () => {
         }}
         dayHeaderClassNames={"back-white"}
         viewClassNames={showTimeTable ? "display-none" : "back-white"}
-        weekNumberClassNames={"day-number"}
-        dayCellClassNames={"day-number"}
         eventClassNames={"event-cell"}
         allDaySlot={false}
         selectable={true}
         select={handleRangeClick}
         slotLabelFormat={{ hour: "numeric", minute: "2-digit", hour12: false }}
         nowIndicator={true}
-        validRange={{ start: new Date().toISOString() }}
         contentHeight={showTimeTable ? 0 : "auto"}
+        slotDuration={"01:00:00"}
+        events={events}
       />
       {showTimeTable && (
         <div className="back-white p-4 rounded">
@@ -124,8 +153,8 @@ export const MyCalendar = () => {
                   className="list-item"
                 >
                   <div className="d-flex gap-5 text-secondary align-items-center my-3">
-                    {moment(event.startDate).format("HH:mm")} -{" "}
-                    {moment(event.endDate).format("HH:mm")}
+                    {moment(event.start).format("HH:mm")} -{" "}
+                    {moment(event.end).format("HH:mm")}
                     <div className="d-flex gap-2 align-items-center">
                       <i
                         class="fa-solid fa-circle"
@@ -186,62 +215,44 @@ export const MyCalendar = () => {
             </div>
             <div className="width-45">
               <h5>Information</h5>
-              <Form.Label htmlFor="basic-url">Field</Form.Label>
-              <Form.Control
-                id="basic-url"
-                aria-describedby="basic-addon3"
-                placeholder="Enter field"
-              />
               <Form.Label htmlFor="basic-url" className="mt-4">
-                Team Name
+                Name
               </Form.Label>
               <Form.Control
                 id="basic-url"
                 aria-describedby="basic-addon3"
-                placeholder="Enter a team name"
+                placeholder="Enter a name"
+                onChange={(e) => setName(e.target.value)}
               />
-              <Form.Label htmlFor="basic-url" className="mt-4">
-                Optional
-              </Form.Label>
-              <div className="d-flex align-items-center gap-3">
-                <Form.Check // prettier-ignore
-                  className="font-small"
-                  type={"checkbox"}
-                  label={"Photographer"}
-                />
-                <Form.Check // prettier-ignore
-                  className="font-small"
-                  type={"checkbox"}
-                  label={"Referee"}
-                />
-              </div>
             </div>
           </div>
           <div className="w-50">
-            <h5>Cost</h5>
-            <div className="d-flex justify-content-between align-items-center w-100 mt-3">
-              <p className="text-secondary">Field Price per hour</p>
-              <p>
-                <strong>$0</strong>
-              </p>
-            </div>
             <Form.Check // prettier-ignore
               className="font-small text-secondary mt-5"
               type={"checkbox"}
               label={
                 "I approve orders according to the selected schedule. Field availability is subject to change at any time and can be discussed again with the ProHouse admin."
               }
+              onChange={(e) => setApprove(e.target.checked)}
             />
           </div>
         </Modal.Body>
         <Modal.Footer className="w-100 d-flex justify-content-start">
-          <Button variant="primary" onClick={handleClose} disabled>
+          <Button
+            variant="success"
+            disabled={!approve}
+            onClick={() => onSubmit()}
+          >
             <i class="fa-brands fa-whatsapp"></i>&nbsp; Message
           </Button>
         </Modal.Footer>
       </Modal>
       {selectedEvent && (
-        <Modal show={openEvent} onHide={() => setOpenEvent(false)}>
+        <Modal
+          show={openEvent}
+          onHide={() => setOpenEvent(false)}
+          dialogClassName="h-75"
+        >
           <Modal.Header closeButton>
             <Modal.Title>Detail Booking</Modal.Title>
           </Modal.Header>
@@ -250,20 +261,20 @@ export const MyCalendar = () => {
               <div>
                 <strong>Booking Date</strong>
                 <p className="text-secondary">
-                  {moment(selectedEvent.startDate).format("dddd, MMMM D, YYYY")}
+                  {moment(selectedEvent.start).format("dddd, MMMM D, YYYY")}
                 </p>
               </div>
               <div>
                 <strong>Time Period</strong>
                 <p className="text-secondary">
-                  {moment(selectedEvent.startDate).format("HH:mm")} -{" "}
-                  {moment(selectedEvent.endDate).format("HH:mm")}
+                  {moment(selectedEvent.start).format("HH:mm")} -{" "}
+                  {moment(selectedEvent.end).format("HH:mm")}
                 </p>
               </div>
             </div>
             <hr />
             <div>
-              <strong>Team Name</strong>
+              <strong>Name</strong>
               <p className="text-secondary">{selectedEvent.title}</p>
             </div>
           </Modal.Body>
