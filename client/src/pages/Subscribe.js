@@ -1,24 +1,33 @@
-import { Button, Container } from "react-bootstrap";
-import AnimationTitles from "../components/functions/AnimationTitles";
+import React from "react";
+import { Container } from "react-bootstrap";
+import GoogleMapReact from "google-map-react";
+
+const LocationPin = ({ text }) => (
+  <div className="pin">
+    <i
+      class="fa-solid fa-location-dot"
+      style={{ color: "#cb0101", fontSize: 40 }}
+    ></i>
+    <p className="pin-text">{text}</p>
+  </div>
+);
 
 function Subscribe() {
   return (
     <div className="subscribe">
       <Container>
-        <AnimationTitles
-          title={`Subscribe to get fresh news update about our properties`}
-          className="title text-center mx-auto w-75"
-        />
-        <p className="gray-50 text-center mt-3 mb-5">
-          Stay up to date with ProHouse or get involved in our community
-        </p>
-        <div className="d-flex justify-content-between align-items-center mx-auto p-1">
-          <input
-            placeholder="Enter Your Email"
-            className="bg-transparent border-0 text-white ps-1 w-100"
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
+          defaultCenter={JSON.parse(process.env.REACT_APP_LOCATION)}
+          defaultZoom={17}
+          style={{ height: 300, margin: 20 }}
+        >
+          <LocationPin
+            lat={JSON.parse(process.env.REACT_APP_LOCATION).lat}
+            lng={JSON.parse(process.env.REACT_APP_LOCATION).lng}
+            text={JSON.parse(process.env.REACT_APP_LOCATION).address}
           />
-          <Button className="m-0">Subscribe</Button>
-        </div>
+        </GoogleMapReact>
       </Container>
     </div>
   );
