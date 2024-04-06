@@ -73,7 +73,8 @@ export const MyCalendar = () => {
   });
 
   const onSubmit = () => {
-    const message = `BookingDate: ${date}
+    const message = `"BookMe Alert"
+  BookingDate: ${date}
   BookingTime: ${startTime} - ${endTime}
   Name: ${name}
     `;
@@ -85,10 +86,13 @@ export const MyCalendar = () => {
     });
     setEvents(newEvent);
     handleClose();
-    let number = "+995595781144".replace(/[^\w\s]/gi, "").replace(/ /g, "");
+    let number = process.env.REACT_APP_TEST_PHONE_NUMBER.replace(
+      /[^\w\s]/gi,
+      ""
+    ).replace(/ /g, "");
 
     // Appending the phone number to the URL
-    let url = `https://web.whatsapp.com/send?phone=${number}`;
+    let url = `${process.env.REACT_APP_WHATSAPP_URL}/send?phone=${number}`;
 
     // Appending the message to the URL by encoding it
     url += `&text=${encodeURI(message)}&app_absent=0`;

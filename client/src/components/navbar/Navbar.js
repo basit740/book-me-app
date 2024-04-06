@@ -1,17 +1,18 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import logo from "../../images/logo/logo.png";
 import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate } from "react-router-dom";
 import "./navbar.css";
 
 function NavBar() {
+  const navigate = useNavigate();
   return (
     <Navbar expand="lg" className="py-3">
       <Container>
         <Navbar.Brand href="/" className="me-lg-5 text-white">
-          Book
+          BookMe
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
@@ -30,6 +31,7 @@ function NavBar() {
           <Button
             variant="primary"
             className="btn-primary d-none d-lg-inline-block"
+            onClick={() => navigate("/calendar")}
           >
             Book
           </Button>

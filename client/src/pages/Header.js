@@ -3,8 +3,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import CountDown from "../components/functions/CountDown";
 import { motion } from "framer-motion";
 import AnimationTitles from "../components/functions/AnimationTitles";
+import { useNavigate } from "react-router-dom";
 
 function Loading() {
+  const navigate = useNavigate();
   // Like button of properties
   function like(e) {
     return e.target.classList.value === "fa-regular fa-heart like"
@@ -25,7 +27,12 @@ function Loading() {
             Our real estate is virtual property you can purchase on a metaverse
             platform
           </p>
-          <Button className="m-0 my-3 px-5 py-2 fs-5 fw-bold">Book</Button>
+          <Button
+            className="m-0 my-3 px-5 py-2 fs-5 fw-bold"
+            onClick={() => navigate("/calendar")}
+          >
+            Book
+          </Button>
           <div
             style={{ color: "white" }}
             className="d-none d-md-flex justify-content-between align-items-center my-4"
