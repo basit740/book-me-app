@@ -394,10 +394,11 @@ body {
 
 /* Start subscribe */
 
-.subscribe .container {
+.subscribe {
   position: relative;
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-bottom: 5rem;
   margin-top: 3rem;
 }
 
@@ -424,7 +425,8 @@ body {
   height: 100%;
   top: 0;
   left: 0;
-  background-image: url(./images/logo/Vector.png), url(./images/logo/Vector-1.png);
+  background-image: url(./images/logo/Vector.png),
+    url(./images/logo/Vector-1.png);
   background-repeat: no-repeat;
   background-position: bottom right 30px, top 10px left;
   z-index: -1;
@@ -548,6 +550,11 @@ footer div span {
 
   .developers .mySwiper .swiper-slide div h6 {
     font-size: 12px;
+  }
+
+  .subscribe {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .subscribe .container div {

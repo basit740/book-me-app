@@ -8,6 +8,7 @@ import "./navbar.css";
 
 function NavBar() {
   const navigate = useNavigate();
+
   return (
     <Navbar expand="lg" className="py-3">
       <Container>
@@ -17,12 +18,18 @@ function NavBar() {
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav className="me-auto my-2 my-lg-0" navbarScroll>
-            <Nav.Link href="#action1">Marketplace</Nav.Link>
-            <Nav.Link href="#action1" className="px-lg-3">
+            <Nav.Link href="#action1" className="text-white">
+              Marketplace
+            </Nav.Link>
+            <Nav.Link href="#about" className="px-lg-3 text-white">
               About Us
             </Nav.Link>
-            <Nav.Link href="#action1">Developers</Nav.Link>
-            <Nav.Link href="/calendar">Calendar</Nav.Link>
+            <Nav.Link href="#location" className="text-white">
+              Location
+            </Nav.Link>
+            <Nav.Link href="/calendar" className="text-white">
+              Calendar
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
         <div className="d-flex align-items-center order">

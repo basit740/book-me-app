@@ -1,5 +1,6 @@
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import { motion } from "framer-motion";
 
 function Footer() {
@@ -36,20 +37,28 @@ function Footer() {
                 Company
               </h6>
               <ul className="p-0">
-                <li>How it works</li>
-                <li>Market</li>
-                <li>About Us</li>
+                <li>
+                  <HashLink to={"/#about"} className="text-white">
+                    About Us
+                  </HashLink>
+                </li>
+                <li>
+                  <HashLink to={"/#location"} className="text-white">
+                    Location
+                  </HashLink>
+                </li>
+                <li>
+                  <HashLink to={"/calendar#"} className="text-white">
+                    Calendar
+                  </HashLink>
+                </li>
               </ul>
             </div>
             <div>
               <h6 className="gray-100 text-uppercase mb-2 fw-normal">
-                Socials
+                Contact
               </h6>
-              <ul className="p-0">
-                <li>Twitter</li>
-                <li>Instagram</li>
-                <li>Facebook</li>
-              </ul>
+              <p className="text-white fw-light">info@revend.group</p>
             </div>
           </motion.div>
         </div>

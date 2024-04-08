@@ -1,34 +1,72 @@
-import React from "react";
-import { Container } from "react-bootstrap";
-import GoogleMapReact from "google-map-react";
-
-const LocationPin = ({ text }) => (
-  <div className="pin">
-    <i
-      class="fa-solid fa-location-dot"
-      style={{ color: "#cb0101", fontSize: 40 }}
-    ></i>
-    <p className="pin-text">{text}</p>
-  </div>
-);
+import React, { useState, useMemo, useEffect } from "react";
+import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
+import { setKey, setLanguage, fromAddress } from "react-geocode";
 
 function Subscribe() {
+  const [map, setMap] = useState(null);
+  const [lat, setLat] = useState(null);
+  const [lng, setLng] = useState(null);
+
+  setKey(process.env.REACT_APP_GOOGLE_MAPS_API_KEY);
+  setLanguage("en");
+
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+  });
+
+  const onLoad = React.useCallback(
+    function callback(map) {
+      const bounds = new window.google.maps.LatLngBounds({
+        lat: lat,
+        lng: lng,
+      });
+      map.fitBounds(bounds);
+
+      setMap(map);
+    },
+    [lat, lng]
+  );
+
+  const mapOptions = useMemo(
+    () => ({
+      styles: [
+        {
+          featureType: "poi",
+          elementType: "labels",
+          stylers: [{ visibility: "on" }],
+        },
+      ],
+    }),
+    []
+  );
+
+  useEffect(() => {
+    fromAddress(process.env.REACT_APP_LOCATION)
+      .then(({ results }) => {
+        const { lat, lng } = results[0].geometry.location;
+        setLat(lat);
+        setLng(lng);
+      })
+      .catch(console.error);
+  }, []);
+
   return (
-    <div className="subscribe">
-      <Container>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
-          defaultCenter={JSON.parse(process.env.REACT_APP_LOCATION)}
-          defaultZoom={17}
-          style={{ height: 300, margin: 20 }}
+    <div id={"location"} className="subscribe">
+      {isLoaded && lat && lng && (
+        <GoogleMap
+          mapContainerStyle={{
+            height: "500px",
+            width: "100%",
+          }}
+          options={mapOptions}
+          center={{ lat: lat, lng: lng }}
+          onLoad={onLoad}
+          zoom={15}
         >
-          <LocationPin
-            lat={JSON.parse(process.env.REACT_APP_LOCATION).lat}
-            lng={JSON.parse(process.env.REACT_APP_LOCATION).lng}
-            text={JSON.parse(process.env.REACT_APP_LOCATION).address}
-          />
-        </GoogleMapReact>
-      </Container>
+          <Marker position={{ lat: lat, lng: lng }} />
+        </GoogleMap>
+      )}
     </div>
   );
 }
