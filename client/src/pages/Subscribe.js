@@ -15,19 +15,6 @@ function Subscribe() {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
   });
 
-  const onLoad = React.useCallback(
-    function callback(map) {
-      const bounds = new window.google.maps.LatLngBounds({
-        lat: lat,
-        lng: lng,
-      });
-      map.fitBounds(bounds);
-
-      setMap(map);
-    },
-    [lat, lng]
-  );
-
   const mapOptions = useMemo(
     () => ({
       styles: [
@@ -61,8 +48,7 @@ function Subscribe() {
           }}
           options={mapOptions}
           center={{ lat: lat, lng: lng }}
-          onLoad={onLoad}
-          zoom={15}
+          zoom={18}
         >
           <Marker position={{ lat: lat, lng: lng }} />
         </GoogleMap>
