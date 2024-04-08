@@ -24,7 +24,7 @@ function NavBar() {
             <Nav.Link href="https://book-me-app.vercel.app/#about" className="px-lg-3 text-white">
               About Us
             </Nav.Link>
-            <Nav.Link href="https://book-me-app.vercel.app/#about" className="text-white">
+            <Nav.Link href="https://book-me-app.vercel.app/#location" className="text-white">
               Location
             </Nav.Link>
             <Nav.Link href="/calendar" className="text-white">
