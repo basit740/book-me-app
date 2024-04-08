@@ -14,7 +14,7 @@ function Partners() {
     initial={{ opacity: 0 }}
     whileInView={{ opacity: 1 }}
     transition={{ duration: 0.8 }}
-    className="partners">
+    className="partners" >
       <Container className="d-flex align-items-center flex-nowrap overflow-hidden">
         <Swiper
           className="mySwiper"
