@@ -218,7 +218,7 @@ body {
 /* Start about us */
 .about .container {
   gap: 50px;
-  margin-top: 7rem;
+  padding-top: 7rem;
   overflow-x: clip;
 }
 
@@ -399,7 +399,7 @@ body {
   padding-left: 5rem;
   padding-right: 5rem;
   padding-bottom: 5rem;
-  margin-top: 3rem;
+  padding-top: 3rem;
 }
 
 .subscribe .container::before {

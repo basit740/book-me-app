@@ -1,4 +1,5 @@
 import { Button, Container } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { motion } from "framer-motion";
 import AnimationTitles from "../components/functions/AnimationTitles";
 

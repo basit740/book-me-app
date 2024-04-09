@@ -3,7 +3,6 @@ import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import { setKey, setLanguage, fromAddress } from "react-geocode";
 
 function Subscribe() {
-  const [map, setMap] = useState(null);
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
 
