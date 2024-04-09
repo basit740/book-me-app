@@ -5,7 +5,7 @@ import AnimationTitles from "../components/functions/AnimationTitles";
 
 function AboutUs() {
   return (
-    <div id={"about"} className="about">
+    <div id={"about"} className="about" style={{paddingTop:"50px"}}>
       <Container className="d-flex justify-content-between flex-wrap flex-md-nowrap">
         <motion.div
           initial={{ x: -200 }}
