@@ -5,9 +5,11 @@ import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
 import "./navbar.css";
+import { useAuth } from "../../hook/useAuthentication";
 
 function NavBar() {
   const navigate = useNavigate();
+  const { isLoggedIn, signOut, user } = useAuth();
 
   return (
     <Navbar expand="lg" className="py-3">
@@ -21,10 +23,16 @@ function NavBar() {
             <Nav.Link href="#action1" className="text-white">
               Marketplace
             </Nav.Link>
-            <Nav.Link href="https://book-me-app.vercel.app/#about" className="px-lg-3 text-white">
+            <Nav.Link
+              href="https://book-me-app.vercel.app/#about"
+              className="px-lg-3 text-white"
+            >
               About Us
             </Nav.Link>
-            <Nav.Link href="https://book-me-app.vercel.app/#location" className="text-white">
+            <Nav.Link
+              href="https://book-me-app.vercel.app/#location"
+              className="text-white"
+            >
               Location
             </Nav.Link>
             <Nav.Link href="/calendar" className="text-white">
@@ -42,6 +50,15 @@ function NavBar() {
           >
             Book
           </Button>
+          {isLoggedIn && (
+            <Button variant={"ghost"} onClick={() => signOut(user._id)}>
+              <i
+                class="fa fa-sign-out"
+                aria-hidden="true"
+                style={{ color: "white" }}
+              ></i>
+            </Button>
+          )}
         </div>
       </Container>
     </Navbar>
