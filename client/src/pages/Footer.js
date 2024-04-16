@@ -52,6 +52,11 @@ function Footer() {
                     Calendar
                   </HashLink>
                 </li>
+                <li>
+                  <HashLink to={"/admin#"} className="text-white">
+                    Admin Login
+                  </HashLink>
+                </li>
               </ul>
             </div>
             <div>

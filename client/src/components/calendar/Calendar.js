@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
@@ -9,29 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import moment from "moment";
 
 import "./Calendar.css";
-
-const eventsData = [
-  {
-    title: "Test Event 1",
-    start: "2024-10-04T20:24:30+00:00",
-    end: "2024-10-04T21:24:30+00:00",
-  },
-  {
-    title: "Test Event 2",
-    start: "2024-10-04T17:24:30+00:00",
-    end: "2024-10-04T18:24:30+00:00",
-  },
-  {
-    title: "Test Event 3",
-    start: "2024-11-04T20:24:30+00:00",
-    end: "2024-11-04T21:24:30+00:00",
-  },
-  {
-    title: "Test Event 4",
-    start: "2024-12-04T20:24:30+00:00",
-    end: "2024-12-04T21:24:30+00:00",
-  },
-];
+import { addBooking, getBooking } from "../../services/bookings";
 
 export const MyCalendar = () => {
   const [show, setShow] = useState(false);
@@ -44,7 +22,30 @@ export const MyCalendar = () => {
   const [name, setName] = useState(null);
   const [approve, setApprove] = useState(false);
   const [eventData, setEventData] = useState(null);
-  const [events, setEvents] = useState(eventsData);
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = () => {
+    getBooking().then((res) => {
+      if (res.status === 200) {
+        const newBookings = res.bookings.map((data) => {
+          let newData = { ...data };
+          if (data.bookingStatus === "pending") {
+            newData.color = "yellow";
+            newData.textColor = "black";
+          } else if (data.bookingStatus === "approved") {
+            newData.color = "green";
+            newData.textColor = "white";
+          }
+          return newData;
+        });
+        setEvents(newBookings);
+      }
+    });
+  };
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -74,32 +75,25 @@ export const MyCalendar = () => {
   });
 
   const onSubmit = () => {
-    const message = `"BookMe Alert"
-  BookingDate: ${date}
-  BookingTime: ${startTime} - ${endTime}
-  Name: ${name}
-    `;
-    const newEvent = [...events];
-    newEvent.push({
-      title: name,
-      start: eventData.startStr,
-      end: eventData.endStr,
+    addBooking(name, eventData.startStr, eventData.endStr).then((res) => {
+      if (res.status === 201) {
+        const message = `"BookMe Alert"
+      BookingDate: ${date}
+      BookingTime: ${startTime} - ${endTime}
+      Name: ${name}
+        `;
+
+        getData();
+        handleClose();
+        let number = process.env.REACT_APP_TEST_PHONE_NUMBER.replace(
+          /[^\w\s]/gi,
+          ""
+        ).replace(/ /g, "");
+        let url = `${process.env.REACT_APP_WHATSAPP_URL}/send?phone=${number}`;
+        url += `&text=${encodeURI(message)}&app_absent=0`;
+        window.open(url);
+      }
     });
-    setEvents(newEvent);
-    handleClose();
-    let number = process.env.REACT_APP_TEST_PHONE_NUMBER.replace(
-      /[^\w\s]/gi,
-      ""
-    ).replace(/ /g, "");
-
-    // Appending the phone number to the URL
-    let url = `${process.env.REACT_APP_WHATSAPP_URL}/send?phone=${number}`;
-
-    // Appending the message to the URL by encoding it
-    url += `&text=${encodeURI(message)}&app_absent=0`;
-
-    // Open our newly created URL in a new tab to send the message
-    window.open(url);
   };
 
   return (
@@ -132,7 +126,6 @@ export const MyCalendar = () => {
           }}
           dayHeaderClassNames={"back-white"}
           viewClassNames={showTimeTable ? "display-none" : "back-white"}
-          eventClassNames={"event-cell"}
           allDaySlot={false}
           selectable={true}
           select={handleRangeClick}

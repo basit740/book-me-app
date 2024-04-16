@@ -10,7 +10,7 @@ const corsOptions = {
   origin: "*",
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
-  methods: "GET, PUT, POST",
+  methods: "GET, PUT, POST, DELETE",
 };
 
 app.use(express.json()); // to parse incoming json

@@ -2,10 +2,8 @@ const express = require("express");
 const bookingController = require("../controllers/bookings");
 const router = express.Router(); // create a router
 
-router.get("/get_admin", bookingController.getAdmin);
-router.get("/get_bookings"); // GET /booking/bookings will be handled right now
-router.post("add_booking"); //POST add booking will be handled
-router.put("/approve_booking"); //PUT approve added booking will be handled
-router.put("/reject_booking"); // PUT reject added booking will be handled
-router.get("/unavailable_dates"); //GET get unavailable dates will be handled
+router.get("/get_bookings", bookingController.getBooking); // GET /booking/bookings will be handled right now
+router.post("/add_booking", bookingController.addBooking); //POST add booking will be handled
+router.put("/approve_booking", bookingController.approveBooking); //PUT approve added booking will be handled
+router.delete("/reject_booking", bookingController.rejectBooking); // DELETE reject added booking will be handled
 module.exports = router; // export the router

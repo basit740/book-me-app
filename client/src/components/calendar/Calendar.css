@@ -40,8 +40,13 @@
   background-color: #0f6efd !important;
 }
 
-.event-cell {
+.approved-event-cell {
   background-color: #085f34;
+  color: white;
+}
+
+.pending-event-cell {
+  background-color: #ffdf27;
   color: white;
 }
 

@@ -53,7 +53,7 @@ function NavBar() {
           {isLoggedIn && (
             <Button variant={"ghost"} onClick={() => signOut(user._id)}>
               <i
-                class="fa fa-sign-out"
+                className="fa fa-sign-out"
                 aria-hidden="true"
                 style={{ color: "white" }}
               ></i>
