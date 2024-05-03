@@ -111,7 +111,6 @@ export const Admin = () => {
             dayHeaderClassNames={"back-white"}
             viewClassNames={showTimeTable ? "display-none" : "back-white"}
             allDaySlot={false}
-            selectable={true}
             slotLabelFormat={{
               hour: "numeric",
               minute: "2-digit",
@@ -131,38 +130,44 @@ export const Admin = () => {
           />
           {showTimeTable && (
             <div className="back-white p-4 rounded">
-              {groupArrays.map((group, index) => (
-                <ListGroup key={index}>
-                  <ListGroup.Item className="bg-light">
-                    <div className="d-flex justify-content-between align-items-center">
-                      <strong>{moment(group.date).format("dddd")}</strong>
-                      <strong>{moment(group.date).format("D MMM YYYY")}</strong>
-                    </div>
-                  </ListGroup.Item>
-                  {group.events.map((event, index) => (
-                    <ListGroup.Item
-                      key={index}
-                      onClick={() => {
-                        setOpenEvent(true);
-                        setSelectedEvent(event);
-                      }}
-                      className="list-item"
-                    >
-                      <div className="d-flex gap-5 text-secondary align-items-center my-3">
-                        {moment(event.start).format("HH:mm")} -{" "}
-                        {moment(event.end).format("HH:mm")}
-                        <div className="d-flex gap-2 align-items-center">
-                          <i
-                            class="fa-solid fa-circle"
-                            style={{ color: "#2c38dd" }}
-                          ></i>
-                          <span className="text-black">{event.title}</span>
-                        </div>
+              {groupArrays.length ? (
+                groupArrays.map((group, index) => (
+                  <ListGroup key={index}>
+                    <ListGroup.Item className="bg-light">
+                      <div className="d-flex justify-content-between align-items-center">
+                        <strong>{moment(group.date).format("dddd")}</strong>
+                        <strong>
+                          {moment(group.date).format("D MMM YYYY")}
+                        </strong>
                       </div>
                     </ListGroup.Item>
-                  ))}
-                </ListGroup>
-              ))}
+                    {group.events.map((event, index) => (
+                      <ListGroup.Item
+                        key={index}
+                        onClick={() => {
+                          setOpenEvent(true);
+                          setSelectedEvent(event);
+                        }}
+                        className="list-item"
+                      >
+                        <div className="d-flex gap-5 text-secondary align-items-center my-3">
+                          {moment(event.start).format("HH:mm")} -{" "}
+                          {moment(event.end).format("HH:mm")}
+                          <div className="d-flex gap-2 align-items-center">
+                            <i
+                              class="fa-solid fa-circle"
+                              style={{ color: "#2c38dd" }}
+                            ></i>
+                            <span className="text-black">{event.title}</span>
+                          </div>
+                        </div>
+                      </ListGroup.Item>
+                    ))}
+                  </ListGroup>
+                ))
+              ) : (
+                <h6 className="text-center">No data found</h6>
+              )}
             </div>
           )}
           {selectedEvent && (
