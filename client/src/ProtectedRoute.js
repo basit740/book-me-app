@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, Alert, Spinner, Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { isMobile, isTablet } from "react-device-detect";
 
 import { useAuth } from "./hook/useAuthentication";
 
@@ -49,7 +50,12 @@ const ProtectedRoute = ({ children }) => {
   } else {
     if (!isLoggedIn) {
       return (
-        <Modal show={show} onHide={handleClose} dialogClassName="w-50" centered>
+        <Modal
+          show={show}
+          onHide={handleClose}
+          dialogClassName={isMobile || isTablet ? "w-100" : "w-50"}
+          centered
+        >
           <Modal.Body>
             <h2 className="text-center">BookMe</h2>
             <p className="text-center">

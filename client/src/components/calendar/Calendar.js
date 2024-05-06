@@ -7,6 +7,7 @@ import { Button, Modal, Form, InputGroup, ListGroup } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import "bootstrap/dist/css/bootstrap.min.css";
 import moment from "moment";
+import { isMobile, isTablet } from "react-device-detect";
 
 import "./Calendar.css";
 import { addBooking, getBooking } from "../../services/bookings";
@@ -117,8 +118,16 @@ export const MyCalendar = () => {
               },
             },
           }}
+          views={{
+            timeGridThreeDay: {
+              type: "timeGrid",
+              duration: { days: 3 },
+            },
+          }}
           plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
-          initialView="timeGridWeek"
+          initialView={
+            isMobile || isTablet ? "timeGridThreeDay" : "timeGridWeek"
+          }
           headerToolbar={{
             left: "today prev,next",
             center: "title",
@@ -186,13 +195,13 @@ export const MyCalendar = () => {
             )}
           </div>
         )}
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={show} onHide={handleClose} centered>
           <Modal.Header closeButton>
             <Modal.Title>Field Message</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <div className="row-justify">
-              <div className="width-45">
+            <div className={isMobile || isTablet ? "row-col" : "row-justify"}>
+              <div className={isMobile || isTablet ? "width-100" : "width-45"}>
                 <h5>Booking Time</h5>
                 <Form.Label htmlFor="basic-url">Select Booking Date</Form.Label>
                 <InputGroup className="mb-3">
@@ -230,7 +239,7 @@ export const MyCalendar = () => {
                   </InputGroup>
                 </div>
               </div>
-              <div className="width-45">
+              <div className={isMobile || isTablet ? "width-100" : "width-45"}>
                 <h5>Information</h5>
                 <Form.Label htmlFor="basic-url" className="mt-4">
                   Name
@@ -243,7 +252,7 @@ export const MyCalendar = () => {
                 />
               </div>
             </div>
-            <div className="w-50">
+            <div className={isMobile || isTablet ? "width-100" : "w-50"}>
               <Form.Check // prettier-ignore
                 className="font-small text-secondary mt-5"
                 type={"checkbox"}
@@ -268,13 +277,20 @@ export const MyCalendar = () => {
           <Modal
             show={openEvent}
             onHide={() => setOpenEvent(false)}
-            dialogClassName="h-75"
+            dialogClassName={`h-75 ${isMobile || isTablet ? "w-100" : "w-50"}`}
+            centered
           >
             <Modal.Header closeButton>
               <Modal.Title>Detail Booking</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <div className="d-flex align-items-center gap-5">
+              <div
+                className={
+                  isMobile || isTablet
+                    ? "d-flex flex-column"
+                    : "d-flex align-items-center gap-5"
+                }
+              >
                 <div>
                   <strong>Booking Date</strong>
                   <p className="text-secondary">

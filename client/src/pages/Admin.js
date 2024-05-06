@@ -6,6 +6,7 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import "bootstrap/dist/css/bootstrap.min.css";
 import moment from "moment";
+import { isMobile, isTablet } from "react-device-detect";
 
 import {
   approveBooking,
@@ -101,8 +102,16 @@ export const Admin = () => {
                 },
               },
             }}
+            views={{
+              timeGridThreeDay: {
+                type: "timeGrid",
+                duration: { days: 3 },
+              },
+            }}
             plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
-            initialView="timeGridWeek"
+            initialView={
+              isMobile || isTablet ? "timeGridThreeDay" : "timeGridWeek"
+            }
             headerToolbar={{
               left: "today prev,next",
               center: "title",
@@ -174,13 +183,21 @@ export const Admin = () => {
             <Modal
               show={openEvent}
               onHide={() => setOpenEvent(false)}
-              dialogClassName="h-75"
+              dialogClassName={`h-75 ${
+                isMobile || isTablet ? "w-100" : "w-50"
+              }`}
             >
               <Modal.Header closeButton>
                 <Modal.Title>Detail Booking</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <div className="d-flex align-items-center gap-5">
+                <div
+                  className={
+                    isMobile || isTablet
+                      ? "d-flex flex-column"
+                      : "d-flex align-items-center gap-5"
+                  }
+                >
                   <div>
                     <strong>Booking Date</strong>
                     <p className="text-secondary">
