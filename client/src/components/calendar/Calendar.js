@@ -90,8 +90,8 @@ export const MyCalendar = () => {
           /[^\w\s]/gi,
           ""
         ).replace(/ /g, "");
-        let url = `${process.env.REACT_APP_WHATSAPP_URL}/send?phone=${number}`;
-        url += `&text=${encodeURI(message)}&app_absent=0`;
+        let url = `${process.env.REACT_APP_WHATSAPP_URL}/${number}`;
+        url += `/?text=${encodeURI(message)}`;
         window.open(url);
       }
     });
@@ -99,8 +99,8 @@ export const MyCalendar = () => {
 
   return (
     <div className="calendar-container py-3">
-      <Container>
-        <h5 className="text-white my-5 text-center">
+      <Container className={(isMobile || isTablet) && "w-100 p-0"}>
+        <h5 className="text-white mb-5 text-center">
           Click the available time to quick booking
         </h5>
         <FullCalendar
@@ -154,6 +154,7 @@ export const MyCalendar = () => {
             setOpenEvent(true);
             setSelectedEvent(arg.event);
           }}
+          selectLongPressDelay={500}
         />
         {showTimeTable && (
           <div className="back-white p-4 rounded">
@@ -181,7 +182,14 @@ export const MyCalendar = () => {
                         <div className="d-flex gap-2 align-items-center">
                           <i
                             class="fa-solid fa-circle"
-                            style={{ color: "#2c38dd" }}
+                            style={{
+                              color:
+                                event.bookingStatus === "pending"
+                                  ? "yellow"
+                                  : event.bookingStatus === "approved"
+                                  ? "green"
+                                  : "#2c38dd",
+                            }}
                           ></i>
                           <span className="text-black">{event.title}</span>
                         </div>
@@ -195,7 +203,13 @@ export const MyCalendar = () => {
             )}
           </div>
         )}
-        <Modal show={show} onHide={handleClose} centered>
+        <Modal
+          show={show}
+          onHide={handleClose}
+          centered
+          dialogClassName={`${isMobile || isTablet ? "mw-100" : "mw-75"}`}
+          fullscreen={isMobile || isTablet}
+        >
           <Modal.Header closeButton>
             <Modal.Title>Field Message</Modal.Title>
           </Modal.Header>

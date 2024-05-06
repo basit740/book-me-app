@@ -61,15 +61,11 @@
   justify-content: center;
 }
 
-.modal.show .modal-dialog {
-  max-width: 80%;
-}
-
 .width-45 {
   width: 45%;
 }
 
-.width {
+.width-100 {
   width: 100%;
 }
 
