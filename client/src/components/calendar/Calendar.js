@@ -293,7 +293,7 @@ export const MyCalendar = () => {
           <Modal.Footer className="w-100 d-flex justify-content-start">
             <Button
               variant="success"
-              disabled={!approve}
+              disabled={!approve || !userName}
               onClick={() => onSubmit()}
             >
               <i class="fa-brands fa-whatsapp"></i>&nbsp; Message
