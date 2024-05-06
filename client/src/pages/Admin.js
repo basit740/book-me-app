@@ -45,7 +45,10 @@ export const Admin = () => {
   };
 
   const handleApprove = (event) => {
-    approveBooking(event._def.extendedProps._id, "approved").then((res) => {
+    approveBooking(
+      event._id ? event._id : event._def.extendedProps._id,
+      "approved"
+    ).then((res) => {
       if (res.status) {
         getData();
       }
@@ -54,11 +57,13 @@ export const Admin = () => {
   };
 
   const handleReject = (event) => {
-    rejectBooking(event._def.extendedProps._id).then((res) => {
-      if (res.data.acknowledged) {
-        getData();
+    rejectBooking(event._id ? event._id : event._def.extendedProps._id).then(
+      (res) => {
+        if (res.data.acknowledged) {
+          getData();
+        }
       }
-    });
+    );
     setOpenEvent(false);
   };
 
@@ -165,7 +170,14 @@ export const Admin = () => {
                           <div className="d-flex gap-2 align-items-center">
                             <i
                               class="fa-solid fa-circle"
-                              style={{ color: "#2c38dd" }}
+                              style={{
+                                color:
+                                  event.bookingStatus === "pending"
+                                    ? "yellow"
+                                    : event.bookingStatus === "approved"
+                                    ? "green"
+                                    : "#2c38dd",
+                              }}
                             ></i>
                             <span className="text-black">{event.title}</span>
                           </div>
