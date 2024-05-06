@@ -1,6 +1,6 @@
 import { BaseUrl } from "../hook/useAuthentication";
 
-export const addBooking = (title, start, end) => {
+export const addBooking = (title, start, end, userName) => {
   let headers = new Headers();
 
   headers.append("Content-Type", "application/json");
@@ -16,6 +16,7 @@ export const addBooking = (title, start, end) => {
       start: start,
       end: end,
       bookingStatus: "pending",
+      userName: userName,
     }),
   })
     .then((response) => response.json())

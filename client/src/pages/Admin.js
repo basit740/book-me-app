@@ -225,9 +225,28 @@ export const Admin = () => {
                   </div>
                 </div>
                 <hr />
-                <div>
-                  <strong>Name</strong>
-                  <p className="text-secondary">{selectedEvent.title}</p>
+                <div
+                  className={
+                    isMobile || isTablet
+                      ? "d-flex flex-column"
+                      : "d-flex align-items-center gap-5"
+                  }
+                >
+                  <div>
+                    <strong>Event Name</strong>
+                    <p className="text-secondary">{selectedEvent.title}</p>
+                  </div>
+                  {(selectedEvent?.userName ||
+                    selectedEvent?.extendedProps?.userName) && (
+                    <div>
+                      <strong>User Name</strong>
+                      <p className="text-secondary">
+                        {selectedEvent?.userName
+                          ? selectedEvent?.userName
+                          : selectedEvent?.extendedProps.userName}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </Modal.Body>
               <Modal.Footer>

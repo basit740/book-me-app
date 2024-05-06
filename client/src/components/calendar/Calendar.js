@@ -20,7 +20,8 @@ export const MyCalendar = () => {
   const [showTimeTable, setShowTimeTable] = useState(false);
   const [openEvent, setOpenEvent] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
-  const [name, setName] = useState(null);
+  const [eventName, setEventName] = useState(null);
+  const [userName, setUserName] = useState(null);
   const [approve, setApprove] = useState(false);
   const [eventData, setEventData] = useState(null);
   const [events, setEvents] = useState([]);
@@ -76,25 +77,28 @@ export const MyCalendar = () => {
   });
 
   const onSubmit = () => {
-    addBooking(name, eventData.startStr, eventData.endStr).then((res) => {
-      if (res.status === 201) {
-        const message = `"BookMe Alert"
+    addBooking(eventName, eventData.startStr, eventData.endStr, userName).then(
+      (res) => {
+        if (res.status === 201) {
+          const message = `"BookMe Alert"
       BookingDate: ${date}
       BookingTime: ${startTime} - ${endTime}
-      Name: ${name}
+      Name: ${eventName}
+      User: ${userName}
         `;
 
-        getData();
-        handleClose();
-        let number = process.env.REACT_APP_TEST_PHONE_NUMBER.replace(
-          /[^\w\s]/gi,
-          ""
-        ).replace(/ /g, "");
-        let url = `${process.env.REACT_APP_WHATSAPP_URL}/${number}`;
-        url += `/?text=${encodeURI(message)}`;
-        window.open(url);
+          getData();
+          handleClose();
+          let number = process.env.REACT_APP_TEST_PHONE_NUMBER.replace(
+            /[^\w\s]/gi,
+            ""
+          ).replace(/ /g, "");
+          let url = `${process.env.REACT_APP_WHATSAPP_URL}/${number}`;
+          url += `/?text=${encodeURI(message)}`;
+          window.open(url);
+        }
       }
-    });
+    );
   };
 
   return (
@@ -256,13 +260,22 @@ export const MyCalendar = () => {
               <div className={isMobile || isTablet ? "width-100" : "width-45"}>
                 <h5>Information</h5>
                 <Form.Label htmlFor="basic-url" className="mt-4">
-                  Name
+                  Event Name
                 </Form.Label>
                 <Form.Control
                   id="basic-url"
                   aria-describedby="basic-addon3"
                   placeholder="Enter a name"
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => setEventName(e.target.value)}
+                />
+                <Form.Label htmlFor="basic-url" className="mt-4">
+                  User Name
+                </Form.Label>
+                <Form.Control
+                  id="basic-url"
+                  aria-describedby="basic-addon3"
+                  placeholder="Enter a name"
+                  onChange={(e) => setUserName(e.target.value)}
                 />
               </div>
             </div>
@@ -320,9 +333,28 @@ export const MyCalendar = () => {
                 </div>
               </div>
               <hr />
-              <div>
-                <strong>Name</strong>
-                <p className="text-secondary">{selectedEvent.title}</p>
+              <div
+                className={
+                  isMobile || isTablet
+                    ? "d-flex flex-column"
+                    : "d-flex align-items-center gap-5"
+                }
+              >
+                <div>
+                  <strong>Event Name</strong>
+                  <p className="text-secondary">{selectedEvent.title}</p>
+                </div>
+                {(selectedEvent?.userName ||
+                  selectedEvent?.extendedProps?.userName) && (
+                  <div>
+                    <strong>User Name</strong>
+                    <p className="text-secondary">
+                      {selectedEvent?.userName
+                        ? selectedEvent?.userName
+                        : selectedEvent?.extendedProps.userName}
+                    </p>
+                  </div>
+                )}
               </div>
             </Modal.Body>
           </Modal>
