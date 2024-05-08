@@ -20,11 +20,11 @@ export const MyCalendar = () => {
   const [showTimeTable, setShowTimeTable] = useState(false);
   const [openEvent, setOpenEvent] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
-  const [eventName, setEventName] = useState(null);
   const [userName, setUserName] = useState(null);
   const [approve, setApprove] = useState(false);
   const [eventData, setEventData] = useState(null);
   const [events, setEvents] = useState([]);
+  const [validated, setValidated] = useState(false);
 
   useEffect(() => {
     getData();
@@ -76,16 +76,20 @@ export const MyCalendar = () => {
     };
   });
 
-  const onSubmit = () => {
-    addBooking(eventName, eventData.startStr, eventData.endStr, userName).then(
-      (res) => {
+  const onSubmit = (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      setValidated(true);
+    } else {
+      setValidated(false);
+      addBooking(eventData.startStr, eventData.endStr, userName).then((res) => {
         if (res.status === 201) {
           const message = `"BookMe Alert"
-      BookingDate: ${date}
-      BookingTime: ${startTime} - ${endTime}
-      Name: ${eventName}
-      User: ${userName}
-        `;
+        BookingDate: ${date}
+        BookingTime: ${startTime} - ${endTime}
+        User: ${userName}
+          `;
 
           getData();
           handleClose();
@@ -97,8 +101,8 @@ export const MyCalendar = () => {
           url += `/?text=${encodeURI(message)}`;
           window.open(url);
         }
-      }
-    );
+      });
+    }
   };
 
   return (
@@ -141,6 +145,9 @@ export const MyCalendar = () => {
           viewClassNames={showTimeTable ? "display-none" : "back-white"}
           allDaySlot={false}
           selectable={true}
+          slotMinTime={"06:00:00"}
+          slotMaxTime={"24:00:00"}
+          locale={"en-GB"}
           select={handleRangeClick}
           slotLabelFormat={{
             hour: "numeric",
@@ -218,87 +225,89 @@ export const MyCalendar = () => {
             <Modal.Title>Field Message</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <div className={isMobile || isTablet ? "row-col" : "row-justify"}>
-              <div className={isMobile || isTablet ? "width-100" : "width-45"}>
-                <h5>Booking Time</h5>
-                <Form.Label htmlFor="basic-url">Select Booking Date</Form.Label>
-                <InputGroup className="mb-3">
-                  <Form.Control
-                    id="basic-url"
-                    aria-describedby="basic-addon3"
-                    value={date}
-                  />
-                  <InputGroup.Text id="basic-addon3">
-                    <i class="fa fa-calendar" aria-hidden="true"></i>
-                  </InputGroup.Text>
-                </InputGroup>
-                <Form.Label htmlFor="basic-url">Select Booking Time</Form.Label>
-                <div className="row-justify">
-                  <InputGroup className="mb-3 w-75">
+            <Form noValidate validated={validated} onSubmit={onSubmit}>
+              <div className={isMobile || isTablet ? "row-col" : "row-justify"}>
+                <div
+                  className={isMobile || isTablet ? "width-100" : "width-45"}
+                >
+                  <h5>Booking Time</h5>
+                  <Form.Label htmlFor="basic-url">
+                    Select Booking Date
+                  </Form.Label>
+                  <InputGroup className="mb-3">
                     <Form.Control
                       id="basic-url"
                       aria-describedby="basic-addon3"
-                      value={startTime}
+                      value={date}
                     />
                     <InputGroup.Text id="basic-addon3">
-                      <i class="fa-regular fa-clock"></i>
+                      <i class="fa fa-calendar" aria-hidden="true"></i>
                     </InputGroup.Text>
                   </InputGroup>
-                  <p className="w-25 text-center">-</p>
-                  <InputGroup className="mb-3 w-75">
+                  <Form.Label htmlFor="basic-url">
+                    Select Booking Time
+                  </Form.Label>
+                  <div className="row-justify">
+                    <InputGroup className="mb-3 w-75">
+                      <Form.Control
+                        id="basic-url"
+                        aria-describedby="basic-addon3"
+                        value={startTime}
+                      />
+                      <InputGroup.Text id="basic-addon3">
+                        <i class="fa-regular fa-clock"></i>
+                      </InputGroup.Text>
+                    </InputGroup>
+                    <p className="w-25 text-center">-</p>
+                    <InputGroup className="mb-3 w-75">
+                      <Form.Control
+                        id="basic-url"
+                        aria-describedby="basic-addon3"
+                        value={endTime}
+                      />
+                      <InputGroup.Text id="basic-addon3">
+                        <i class="fa-regular fa-clock"></i>
+                      </InputGroup.Text>
+                    </InputGroup>
+                  </div>
+                </div>
+                <div
+                  className={isMobile || isTablet ? "width-100" : "width-45"}
+                >
+                  <h5>Information</h5>
+                  <Form.Group controlId="validationCustom01">
+                    <Form.Label htmlFor="basic-url" className="mt-4">
+                      User Name
+                    </Form.Label>
                     <Form.Control
+                      required
                       id="basic-url"
                       aria-describedby="basic-addon3"
-                      value={endTime}
+                      placeholder="Enter your name"
+                      onChange={(e) => setUserName(e.target.value)}
                     />
-                    <InputGroup.Text id="basic-addon3">
-                      <i class="fa-regular fa-clock"></i>
-                    </InputGroup.Text>
-                  </InputGroup>
+                    <Form.Control.Feedback type="invalid">
+                      Please enter your name
+                    </Form.Control.Feedback>
+                  </Form.Group>
                 </div>
               </div>
-              <div className={isMobile || isTablet ? "width-100" : "width-45"}>
-                <h5>Information</h5>
-                <Form.Label htmlFor="basic-url" className="mt-4">
-                  Event Name
-                </Form.Label>
-                <Form.Control
-                  id="basic-url"
-                  aria-describedby="basic-addon3"
-                  placeholder="Enter a name"
-                  onChange={(e) => setEventName(e.target.value)}
-                />
-                <Form.Label htmlFor="basic-url" className="mt-4">
-                  User Name
-                </Form.Label>
-                <Form.Control
-                  id="basic-url"
-                  aria-describedby="basic-addon3"
-                  placeholder="Enter a name"
-                  onChange={(e) => setUserName(e.target.value)}
+              <div className={isMobile || isTablet ? "width-100" : "w-50"}>
+                <Form.Check // prettier-ignore
+                  className="font-small text-secondary mt-5"
+                  type={"checkbox"}
+                  label={
+                    "I approve orders according to the selected schedule. Field availability is subject to change at any time and can be discussed again with the ProHouse admin."
+                  }
+                  onChange={(e) => setApprove(e.target.checked)}
                 />
               </div>
-            </div>
-            <div className={isMobile || isTablet ? "width-100" : "w-50"}>
-              <Form.Check // prettier-ignore
-                className="font-small text-secondary mt-5"
-                type={"checkbox"}
-                label={
-                  "I approve orders according to the selected schedule. Field availability is subject to change at any time and can be discussed again with the ProHouse admin."
-                }
-                onChange={(e) => setApprove(e.target.checked)}
-              />
-            </div>
+              <hr />
+              <Button variant="success" disabled={!approve} type={"submit"}>
+                <i class="fa-brands fa-whatsapp"></i>&nbsp; Message
+              </Button>
+            </Form>
           </Modal.Body>
-          <Modal.Footer className="w-100 d-flex justify-content-start">
-            <Button
-              variant="success"
-              disabled={!approve || !userName}
-              onClick={() => onSubmit()}
-            >
-              <i class="fa-brands fa-whatsapp"></i>&nbsp; Message
-            </Button>
-          </Modal.Footer>
         </Modal>
         {selectedEvent && (
           <Modal
@@ -341,20 +350,9 @@ export const MyCalendar = () => {
                 }
               >
                 <div>
-                  <strong>Event Name</strong>
-                  <p className="text-secondary">{selectedEvent.title}</p>
+                  <strong>User Name</strong>
+                  <p className="text-secondary">{selectedEvent?.title}</p>
                 </div>
-                {(selectedEvent?.userName ||
-                  selectedEvent?.extendedProps?.userName) && (
-                  <div>
-                    <strong>User Name</strong>
-                    <p className="text-secondary">
-                      {selectedEvent?.userName
-                        ? selectedEvent?.userName
-                        : selectedEvent?.extendedProps.userName}
-                    </p>
-                  </div>
-                )}
               </div>
             </Modal.Body>
           </Modal>

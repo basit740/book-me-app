@@ -37,6 +37,10 @@ function Subscribe() {
       .catch(console.error);
   }, []);
 
+  const showInMapClicked = (lat, lng) => {
+    window.open("https://maps.google.com?q=" + lat + "," + lng);
+  };
+
   return (
     <div id={"location"} className="subscribe">
       {isLoaded && lat && lng && (
@@ -48,8 +52,16 @@ function Subscribe() {
           options={mapOptions}
           center={{ lat: lat, lng: lng }}
           zoom={18}
+          onClick={() => showInMapClicked(lat, lng)}
         >
-          <Marker position={{ lat: lat, lng: lng }} />
+          <Marker
+            position={{ lat: lat, lng: lng }}
+            onClick={(marker) => {
+              const lat = marker.latLng.lat();
+              const lng = marker.latLng.lng();
+              showInMapClicked(lat, lng);
+            }}
+          />
         </GoogleMap>
       )}
     </div>

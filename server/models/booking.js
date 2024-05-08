@@ -13,7 +13,6 @@ const bookingSchema = new Schema({
     required: true,
   },
   bookingStatus: String,
-  userName: String,
 });
 // export the model
 module.exports = mongoose.model("bookings", bookingSchema);

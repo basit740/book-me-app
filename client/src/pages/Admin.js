@@ -233,20 +233,9 @@ export const Admin = () => {
                   }
                 >
                   <div>
-                    <strong>Event Name</strong>
+                    <strong>User Name</strong>
                     <p className="text-secondary">{selectedEvent.title}</p>
                   </div>
-                  {(selectedEvent?.userName ||
-                    selectedEvent?.extendedProps?.userName) && (
-                    <div>
-                      <strong>User Name</strong>
-                      <p className="text-secondary">
-                        {selectedEvent?.userName
-                          ? selectedEvent?.userName
-                          : selectedEvent?.extendedProps.userName}
-                      </p>
-                    </div>
-                  )}
                 </div>
               </Modal.Body>
               <Modal.Footer>
