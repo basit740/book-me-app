@@ -82,26 +82,23 @@ export const MyCalendar = () => {
     if (form.checkValidity() === false) {
       setValidated(true);
     } else {
-      setValidated(false);
-      addBooking(eventData.startStr, eventData.endStr, userName).then((res) => {
-        if (res.status === 201) {
-          const message = `"BookMe Alert"
+      const message = `"BookMe Alert"
         BookingDate: ${date}
         BookingTime: ${startTime} - ${endTime}
         User: ${userName}
           `;
 
-          getData();
-          handleClose();
-          let number = process.env.REACT_APP_TEST_PHONE_NUMBER.replace(
-            /[^\w\s]/gi,
-            ""
-          ).replace(/ /g, "");
-          let url = `${process.env.REACT_APP_WHATSAPP_URL}/${number}`;
-          url += `/?text=${encodeURI(message)}`;
-          window.open(url);
-        }
-      });
+      getData();
+      handleClose();
+      let number = process.env.REACT_APP_TEST_PHONE_NUMBER.replace(
+        /[^\w\s]/gi,
+        ""
+      ).replace(/ /g, "");
+      let url = `${process.env.REACT_APP_WHATSAPP_URL}/${number}`;
+      url += `/?text=${encodeURI(message)}`;
+      window.open(url);
+      setValidated(false);
+      addBooking(eventData.startStr, eventData.endStr, userName);
     }
   };
 
