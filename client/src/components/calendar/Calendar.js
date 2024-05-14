@@ -25,6 +25,7 @@ export const MyCalendar = () => {
   const [eventData, setEventData] = useState(null);
   const [events, setEvents] = useState([]);
   const [validated, setValidated] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
     getData();
@@ -52,12 +53,42 @@ export const MyCalendar = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  function isAnOverlapEvent(eventStartDay, eventEndDay) {
+    for (let i = 0; i < events.length; i++) {
+      const eventA = events[i];
+
+      // start-time in between any of the events
+      if (eventStartDay > eventA.start && eventStartDay < eventA.end) {
+        console.log("start-time in between any of the events");
+        return true;
+      }
+      //end-time in between any of the events
+      if (eventEndDay > eventA.start && eventEndDay < eventA.end) {
+        console.log("end-time in between any of the events");
+        return true;
+      }
+      //any of the events in between/on the start-time and end-time
+      if (eventStartDay <= eventA.start && eventEndDay >= eventA.end) {
+        console.log(
+          "any of the events in between/on the start-time and end-time"
+        );
+        return true;
+      }
+    }
+    return false;
+  }
+
   const handleRangeClick = (arg) => {
-    setDate(moment(arg.startStr).format("DD-MM-YYYY"));
-    setStartTime(moment(arg.startStr).format("HH:mm"));
-    setEndTime(moment(arg.endStr).format("HH:mm"));
-    setEventData(arg);
-    handleShow();
+    const status = isAnOverlapEvent(arg.startStr, arg.endStr);
+    if (status) {
+      setShowAlert(true);
+    } else {
+      setDate(moment(arg.startStr).format("DD-MM-YYYY"));
+      setStartTime(moment(arg.startStr).format("HH:mm"));
+      setEndTime(moment(arg.endStr).format("HH:mm"));
+      setEventData(arg);
+      handleShow();
+    }
   };
 
   const groups = events.reduce((groups, game) => {
@@ -354,6 +385,19 @@ export const MyCalendar = () => {
             </Modal.Body>
           </Modal>
         )}
+        <Modal show={showAlert} onHide={() => setShowAlert(false)}>
+          <Modal.Header closeButton>
+            <Modal.Title>Alert!!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            This slot is already booked. Please book on a vacant slot.
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={() => setShowAlert(false)}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </Container>
     </div>
   );
