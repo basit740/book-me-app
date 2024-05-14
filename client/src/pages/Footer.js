@@ -68,11 +68,11 @@ function Footer() {
           transition={{ duration: 0.8 }}
           className="d-flex justify-content-between flex-column flex-md-row flex-wrap gray-100 pt-3"
         >
-          <p>© 2023 ProHouse. All rights reserved</p>
+          <p>© 2024 YHNS. All rights reserved</p>
           <p>
             Design by{" "}
             <Link className="link-primary link-underline-opacity-0" to={""}>
-              Revend
+              YHNS
             </Link>
           </p>
         </motion.div>
