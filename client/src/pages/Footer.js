@@ -19,10 +19,10 @@ function Footer() {
               className="mb-3"
             />
             <p className="gray-100">
-              Please contact us if you have any specific <br /> idea or request.
+              Silakan hubungi kami jika Anda memiliki <br /> pertanyaan.
             </p>
             <Link className="link-primary link-underline-opacity-0" to={""}>
-              info@revend.group
+              baritominisoccer@gmail.com
             </Link>
           </motion.div>
           <span className="d-block d-md-none"></span>
@@ -34,7 +34,7 @@ function Footer() {
           >
             <div className="me-5">
               <h6 className="gray-100 text-uppercase mb-2 fw-normal">
-                Company
+                Quick Link
               </h6>
               <ul className="p-0">
                 <li>
@@ -58,7 +58,8 @@ function Footer() {
               <h6 className="gray-100 text-uppercase mb-2 fw-normal">
                 Contact
               </h6>
-              <p className="text-white fw-light">info@revend.group</p>
+              <p className="text-white fw-light">baritominisoccer@gmail.com</p>
+              <p className="text-white fw-light">+62 877-1156-9168</p>
             </div>
           </motion.div>
         </div>
