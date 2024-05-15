@@ -44,10 +44,10 @@ function NavBar() {
         </Navbar.Collapse>
         <div className="d-flex align-items-center order">
           <span className="line d-lg-inline-block d-none"></span>
-          <i className="fa-regular fa-heart"></i>
+          {/* <i className="fa-regular fa-heart"></i> */}
           <Button
             variant="primary"
-            className="btn-primary d-none d-lg-inline-block"
+            className="btn-primary btn-lg d-none d-lg-inline-block"
             onClick={() => navigate("/calendar")}
           >
             Book
