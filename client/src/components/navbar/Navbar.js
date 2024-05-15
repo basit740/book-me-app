@@ -19,7 +19,7 @@ function NavBar() {
               src={require("../../images/logo/logo.png")}
               alt="logo"
               className="mb-3"
-              style={{ width: '50px', height: 'auto' }}
+              style={{ width: '100px', height: 'auto' }}
             />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
