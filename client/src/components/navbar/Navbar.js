@@ -14,7 +14,7 @@ function NavBar() {
   return (
     <Navbar expand="lg" className="py-3">
       <Container>
-        <Navbar.Brand href="/" className="d-flex align-items-center">
+        <Navbar.Brand href="/" className="me-auto">
           <img
               src={require("../../images/logo/logo.png")}
               alt="logo"
