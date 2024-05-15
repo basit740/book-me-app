@@ -23,7 +23,7 @@ function Footer() {
             <p className="gray-100">
               Silakan hubungi kami jika anda memiliki <br /> pertanyaan.
             </p>
-            <Link className="link-primary link-underline-opacity-0" to={""}>
+            <Link to="mailto:baritominisoccer@gmail.com" className="link-primary link-underline-opacity-0">
               baritominisoccer@gmail.com
             </Link>
           </motion.div>
@@ -61,6 +61,7 @@ function Footer() {
                 Contact
               </h6>
               <a href="https://wa.me/6287711569168" className="text-white fw-light">+62 877-1156-9168</a>
+              <br />
               <a href="mailto:baritominisoccer@gmail.com" className="text-white fw-light">baritominisoccer@gmail.com</a>
             </div>
           </motion.div>
