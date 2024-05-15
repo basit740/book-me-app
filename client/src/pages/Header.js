@@ -22,7 +22,7 @@ function Loading() {
           animate={{ x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <AnimationTitles title="BARITO Mini Soccer" />
+          <AnimationTitles title="BARITO MiniSoccer" />
           <p className="gray-90 mt-3 fs-5">
             Lapangan Mini Soccer di Tengah Kota Semarang
           </p>
@@ -32,7 +32,7 @@ function Loading() {
           >
             Book Now
           </Button>
-          <div
+          {/* <div
             style={{ color: "white" }}
             className="d-none d-md-flex justify-content-between align-items-center my-4"
           >
@@ -48,7 +48,7 @@ function Loading() {
               <h5 className="fw-bold fs-1">12K+</h5>
               <span className="gray-100">developers</span>
             </div>
-          </div>
+          </div> */}
         </motion.div>
         <motion.div
           initial={{ x: 400 }}
@@ -81,7 +81,8 @@ function Loading() {
                 </div>
               </Card.Body>
             </Card>
-            <Card className="bg-black-100">
+
+            {/* <Card className="bg-black-100">
               <Card.Body className="p-2">
                 <div className="rounded overflow-hidden position-relative">
                   <Card.Img
@@ -104,7 +105,8 @@ function Loading() {
                   </div>
                 </div>
               </Card.Body>
-            </Card>
+            </Card> */}
+
           </div>
         </motion.div>
         <motion.div
