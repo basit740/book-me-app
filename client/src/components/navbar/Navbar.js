@@ -16,7 +16,7 @@ function NavBar() {
       <Container>
         <Navbar.Brand href="/" >
           <img
-              src={require("../images/logo/logo.png")}
+              src={require("../../images/logo/logo.png")}
               alt="logo"
               className="mb-3"
               style={{ width: '200px', height: 'auto' }}
