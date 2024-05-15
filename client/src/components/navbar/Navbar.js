@@ -48,6 +48,7 @@ function NavBar() {
           <Button
             variant="primary"
             className="btn-primary btn-lg d-none d-lg-inline-block"
+            style={{ width: '200px' }}
             onClick={() => navigate("/calendar")}
           >
             Book
