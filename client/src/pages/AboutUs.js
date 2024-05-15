@@ -12,16 +12,17 @@ function AboutUs() {
           whileInView={{ x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <AnimationTitles title="What is ProHouse?" className="title" />
+          <AnimationTitles title="Barito Mini Soccer" className="title" />
           <p className="gray-50 mb-5">
-            As new technologies like cryptocurrency develop, the real estate
-            sector is changing drastically. It is important to understand both
-            how these technologies and the traditional real estate market work.
-            Governments are unable to comprehend the rapid advancement of
-            technology and modify their legal frameworks to accommodate it fast
-            enough.
+            Selamat datang di Barito MiniSoccer! Kami adalah destinasi terkemuka untuk penyewaan lapangan mini 
+            soccer di tengah kota. Dengan lokasi yang strategis dan fasilitas yang lengkap, kami menyediakan 
+            pengalaman bermain sepak bola yang menyenangkan dan nyaman bagi para penggemar olahraga 
+            dari segala usia. Dengan lapangan berkualitas tinggi dan suasana yang ramah, kami menjadi pilihan 
+            utama bagi individu, kelompok, dan tim yang mencari tempat yang ideal untuk berolahraga, 
+            bersosialisasi, dan meningkatkan keterampilan sepak bola mereka. Rasakan kegembiraan bermain
+             di Barito MiniSoccer dan buat momen-momen tak terlupakan bersama teman dan keluarga Anda.
           </p>
-          <Button variant="primary ms-0">Read More</Button>
+          {/* <Button variant="primary ms-0">Read More</Button> */}
         </motion.div>
         <motion.div
           initial={{ x: 200 }}
