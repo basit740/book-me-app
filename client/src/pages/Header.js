@@ -65,19 +65,6 @@ function Loading() {
                     alt="img"
                     src={require("../images/properties/house_big.webp")}
                   />
-                  <i className="fa-regular fa-heart like" onClick={like}></i>
-                </div>
-                <h5 className="mt-2 text-white fw-normal">Blue Sky</h5>
-                <p className="gray-90">@ERA Ukraine Real Estate</p>
-                <div className="d-flex">
-                  <div className="me-3">
-                    <CountDown h={23} m={16} s={11} />
-                    <span className="gray-90">Remaining Time</span>
-                  </div>
-                  <div>
-                    <h6 className="text-white">17.31 ETH</h6>
-                    <span className="gray-90">Current Bid</span>
-                  </div>
                 </div>
               </Card.Body>
             </Card>
