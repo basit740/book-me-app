@@ -18,7 +18,7 @@ function Footer() {
               src={require("../images/logo/Barito_logo.png")}
               alt="logo"
               className="mb-3"
-              style={{ width: '100px', height: 'auto' }}
+              style={{ width: '200px', height: 'auto' }}
             />
             <p className="gray-100">
               Silakan hubungi kami jika Anda memiliki <br /> pertanyaan.
