@@ -22,16 +22,15 @@ function Loading() {
           animate={{ x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <AnimationTitles title="Future of real estate investing" />
+          <AnimationTitles title="BARITO Mini Soccer" />
           <p className="gray-90 mt-3 fs-5">
-            Our real estate is virtual property you can purchase on a metaverse
-            platform
+            Lapangan Mini Soccer di Tengah Kota Semarang
           </p>
           <Button
             className="m-0 my-3 px-5 py-2 fs-5 fw-bold"
             onClick={() => navigate("/calendar")}
           >
-            Book
+            Book Now
           </Button>
           <div
             style={{ color: "white" }}

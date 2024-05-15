@@ -13,11 +13,12 @@ function Footer() {
             whileInView={{ x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <img
+            
+            {/* <img
               src={require("../images/logo/logo.png")}
               alt="logo"
               className="mb-3"
-            />
+            /> */}
             <p className="gray-100">
               Silakan hubungi kami jika Anda memiliki <br /> pertanyaan.
             </p>
@@ -58,8 +59,8 @@ function Footer() {
               <h6 className="gray-100 text-uppercase mb-2 fw-normal">
                 Contact
               </h6>
-              <p className="text-white fw-light">baritominisoccer@gmail.com</p>
               <p className="text-white fw-light">+62 877-1156-9168</p>
+              <p className="text-white fw-light">baritominisoccer@gmail.com</p>
             </div>
           </motion.div>
         </div>
