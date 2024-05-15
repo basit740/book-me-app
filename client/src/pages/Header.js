@@ -63,7 +63,7 @@ function Loading() {
                   <Card.Img
                     variant="top"
                     alt="img"
-                    src={require("../images/properties/house_big.webp")}
+                    src={require("../images/properties/poster.png")}
                   />
                 </div>
               </Card.Body>

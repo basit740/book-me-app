@@ -12,9 +12,9 @@ function NavBar() {
   const { isLoggedIn, signOut, user } = useAuth();
 
   return (
-    <Navbar expand="lg" className="d-flex align-items-center">
+    <Navbar expand="lg" className="py-3">
       <Container>
-        <Navbar.Brand href="/" >
+        <Navbar.Brand href="/" className="d-flex align-items-center">
           <img
               src={require("../../images/logo/logo.png")}
               alt="logo"
