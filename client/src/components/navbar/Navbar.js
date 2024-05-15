@@ -43,7 +43,7 @@ function NavBar() {
           </Nav>
         </Navbar.Collapse>
         <div className="d-flex align-items-center order">
-          <span className="line d-lg-inline-block d-none" style={{ marginRight: '20px' }}></span>
+          <span className="line d-lg-inline-block d-none" style={{ marginRight: '25px' }}></span>
           <Button
             variant="primary"
             className="btn-primary btn-lg d-none d-lg-inline-block"

@@ -56,32 +56,7 @@ function Loading() {
           transition={{ duration: 0.8 }}
           className="w-100 my-5"
         >
-          <div className="cards">
-            {/* <Card className="bg-black-100 rounded">
-              <Card.Body className="p-2">
-                <div className="rounded overflow-hidden position-relative">
-                  <Card.Img
-                    variant="top"
-                    alt="img"
-                    src={require("../images/properties/house_big-1.webp")}
-                  />
-                  <i className="fa-regular fa-heart like" onClick={like}></i>
-                </div>
-                <h5 className="mt-2 text-white fw-normal">Residence Rybna</h5>
-                <p className="gray-90">@UA real estate agency</p>
-                <div className="d-flex">
-                  <div className="me-3">
-                    <CountDown h={18} m={21} s={8} />
-                    <span className="gray-90">Remaining Time</span>
-                  </div>
-                  <div>
-                    <h6 className="text-white">29.71 ETH</h6>
-                    <span className="gray-90">Current Bid</span>
-                  </div>
-                </div>
-              </Card.Body>
-            </Card> */}
-
+          <div>
             <Card className="bg-black-100">
               <Card.Body className="p-2">
                 <div className="rounded overflow-hidden position-relative">
