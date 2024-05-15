@@ -89,7 +89,7 @@ export const Admin = () => {
     <Container className="my-4">
       <div className="calendar-container py-3">
         <Container>
-          <h5 className="text-white my-5 text-center">
+          <h5 className="text-red my-5 text-center">
             Click the available time to quick booking
           </h5>
           <FullCalendar

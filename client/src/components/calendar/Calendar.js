@@ -137,7 +137,7 @@ export const MyCalendar = () => {
     <div className="calendar-container py-3">
       <Container className={(isMobile || isTablet) && "w-100 p-0"}>
         <h5 className="text-white mb-5 text-center">
-          Click the available time to quick booking
+          Klik dan tahan jam yang diinginkan untuk booking
         </h5>
         <FullCalendar
           customButtons={{
