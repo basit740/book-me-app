@@ -21,7 +21,7 @@ function Footer() {
               style={{ width: '200px', height: 'auto' }}
             />
             <p className="gray-100">
-              Silakan hubungi kami jika Anda memiliki <br /> pertanyaan.
+              Silakan hubungi kami jika anda memiliki <br /> pertanyaan.
             </p>
             <Link className="link-primary link-underline-opacity-0" to={""}>
               baritominisoccer@gmail.com
@@ -60,7 +60,7 @@ function Footer() {
               <h6 className="gray-100 text-uppercase mb-2 fw-normal">
                 Contact
               </h6>
-              <p className="text-white fw-light">+62 877-1156-9168</p>
+              <a href="https://wa.me/6287711569168" className="text-white fw-light">+62 877-1156-9168</a>
               <p className="text-white fw-light">baritominisoccer@gmail.com</p>
             </div>
           </motion.div>
