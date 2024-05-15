@@ -14,11 +14,11 @@ function Footer() {
             transition={{ duration: 0.8 }}
           >
             
-            {/* <img
-              src={require("../images/logo/logo.png")}
+            <img
+              src={require("../images/logo/Barito_logo.png")}
               alt="logo"
               className="mb-3"
-            /> */}
+            />
             <p className="gray-100">
               Silakan hubungi kami jika Anda memiliki <br /> pertanyaan.
             </p>

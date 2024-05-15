@@ -14,13 +14,13 @@ function AboutUs() {
         >
           <AnimationTitles title="Barito Mini Soccer" className="title" />
           <p className="gray-50 mb-5">
-            Selamat datang di Barito MiniSoccer! Kami adalah destinasi terkemuka untuk penyewaan lapangan mini 
-            soccer di tengah kota. Dengan lokasi yang strategis dan fasilitas yang lengkap, kami menyediakan 
-            pengalaman bermain sepak bola yang menyenangkan dan nyaman bagi para penggemar olahraga 
-            dari segala usia. Dengan lapangan berkualitas tinggi dan suasana yang ramah, kami menjadi pilihan 
-            utama bagi individu, kelompok, dan tim yang mencari tempat yang ideal untuk berolahraga, 
-            bersosialisasi, dan meningkatkan keterampilan sepak bola mereka. Rasakan kegembiraan bermain
-             di Barito MiniSoccer dan buat momen-momen tak terlupakan bersama teman dan keluarga Anda.
+          Selamat datang di Barito MiniSoccer! Kami adalah destinasi utama untuk penyewaan lapangan mini soccer 
+          di tengah kota. Dengan lokasi yang strategis dan fasilitas yang lengkap, kami berkomitmen untuk memberikan 
+          pengalaman bermain sepak bola yang tak terlupakan dan nyaman bagi semua penggemar olahraga, dari yang muda 
+          hingga yang tua. Lapangan berkualitas tinggi dan suasana yang ramah menjadikan kami pilihan utama bagi 
+          individu, kelompok, dan tim yang mencari tempat ideal untuk berolahraga, bersosialisasi, dan meningkatkan 
+          keterampilan sepak bola mereka. Segera rasakan kegembiraan bermain di Barito MiniSoccer dan buatlah momen-momen 
+          berharga bersama teman dan keluarga Anda!
           </p>
           {/* <Button variant="primary ms-0">Read More</Button> */}
         </motion.div>
