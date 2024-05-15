@@ -14,15 +14,17 @@ function NavBar() {
   return (
     <Navbar expand="lg" className="py-3">
       <Container>
-        <Navbar.Brand href="/" className="me-lg-5 text-white">
-          BookMe
+        <Navbar.Brand href="/" >
+          <img
+              src={require("../images/logo/logo.png")}
+              alt="logo"
+              className="mb-3"
+              style={{ width: '200px', height: 'auto' }}
+            />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav className="me-auto my-2 my-lg-0" navbarScroll>
-            <Nav.Link href="#action1" className="text-white">
-              Marketplace
-            </Nav.Link>
             <Nav.Link
               href="https://book-me-app.vercel.app/#about"
               className="px-lg-3 text-white"
