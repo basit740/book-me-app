@@ -61,7 +61,7 @@ function Footer() {
                 Contact
               </h6>
               <a href="https://wa.me/6287711569168" className="text-white fw-light">+62 877-1156-9168</a>
-              <p className="text-white fw-light">baritominisoccer@gmail.com</p>
+              <a href="mailto:baritominisoccer@gmail.com" className="text-white fw-light">baritominisoccer@gmail.com</a>
             </div>
           </motion.div>
         </div>
