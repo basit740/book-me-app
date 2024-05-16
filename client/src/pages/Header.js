@@ -56,7 +56,7 @@ function Loading() {
           transition={{ duration: 0.8 }}
           className="w-100 my-5"
         >
-          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Card className="bg-black-100" style={{ height: '100%', width: 'fit-content'}}>
             <Card.Body className="p-2">
               <div className="rounded overflow-hidden position-relative" style={{ height: '100%' }}>
@@ -64,7 +64,7 @@ function Loading() {
                   variant="top"
                   alt="img"
                   src={require("../images/properties/poster.png")}
-                  style={{ width: '150%', height: '150%', objectFit: 'cover' }}
+                  style={{ width: '300%', height: '300%', objectFit: 'cover' }}
                 />
               </div>
             </Card.Body>
