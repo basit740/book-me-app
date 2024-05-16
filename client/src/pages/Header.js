@@ -23,7 +23,7 @@ function Loading() {
         >
           <AnimationTitles title="BARITO MiniSoccer" />
           <p className="gray-90 mt-3 fs-5">
-            Lapangan Mini Soccer di Tengah Kota Semarang
+            Lapangan Mini Soccer Terbaru di Tengah Kota Semarang
           </p>
           <Button
             className="m-0 my-3 px-5 py-2 fs-5 fw-bold"
@@ -37,8 +37,9 @@ function Loading() {
           animate={{ x: 0 }}
           transition={{ duration: 0.8 }}
           className="w-100 my-5"
+          style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}
         >
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <div>
           <Card className="bg-black-100" style={{ height: '100%', width: 'fit-content'}}>
             <Card.Body className="p-2">
               <div className="rounded overflow-hidden position-relative" style={{ height: '100%' }}>
