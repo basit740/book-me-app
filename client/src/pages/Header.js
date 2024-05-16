@@ -36,7 +36,7 @@ function Loading() {
           initial={{ x: 400 }}
           animate={{ x: 0 }}
           transition={{ duration: 0.8 }}
-          className="w-100 my-5"
+          className="w-100"
           style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}
         >
           <div>
