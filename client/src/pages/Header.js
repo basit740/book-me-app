@@ -21,7 +21,7 @@ function Loading() {
           initial={{ x: -400 }}
           animate={{ x: 0 }}
           transition={{ duration: 0.8 }}
-          style={{ position: 'absolute', top: 0 }}
+          style={{ top: 0 }}
         >
           <AnimationTitles title="BARITO MiniSoccer" />
           <p className="gray-90 mt-3 fs-5">
