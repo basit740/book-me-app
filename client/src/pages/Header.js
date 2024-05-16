@@ -64,7 +64,7 @@ function Loading() {
                   variant="top"
                   alt="img"
                   src={require("../images/properties/poster.png")}
-                  style={{ width: '300%', height: '300%', objectFit: 'cover' }}
+                  style={{ width: '300px', height: '300px', objectFit: 'cover' }}
                 />
               </div>
             </Card.Body>
