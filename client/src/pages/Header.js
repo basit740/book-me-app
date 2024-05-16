@@ -57,7 +57,7 @@ function Loading() {
           className="w-100 my-5"
         >
           <div>
-          <Card className="bg-black-100" style={{ height: '100%' }}>
+          <Card className="bg-black-100" style={{ height: '100%', width: 'fit-content'}}>
             <Card.Body className="p-2">
               <div className="rounded overflow-hidden position-relative" style={{ height: '100%' }}>
                 <Card.Img
