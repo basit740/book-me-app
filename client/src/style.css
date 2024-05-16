@@ -11,6 +11,10 @@ body {
 .gray-50 {
   color: #c3c5ce;
 }
+.text-red {
+
+  color: red;
+}
 
 .gray-90 {
   color: #5e6379;
