@@ -41,27 +41,7 @@ export const getBooking = (title, start, end) => {
   })
     .then((response) => response.json())
     .then((json) => {
-      const bookings = json.map((booking) => {
-        const startDate = new Date(booking.start);
-        const endDate = new Date(booking.end);
-
-        const options = {
-          weekday: "long", // Display full name of the day
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-          timeZone: "UTC", // Assuming dates are in UTC, adjust if needed
-          timeZoneName: "short", // Display short name of the timezone
-          locale: "id-ID", // Set locale to Indonesian
-        };
-
-        booking.start = startDate.toLocaleDateString("id-ID", options);
-        booking.end = endDate.toLocaleDateString("id-ID", options);
-
-        return booking;
-      });
-
-      return bookings;
+      return json;
     })
     .catch((error) => {
       return error;

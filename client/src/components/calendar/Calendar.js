@@ -3,6 +3,7 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import moment from "moment-timezone";
 import { Button, Modal, Form, InputGroup, ListGroup } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -175,7 +176,8 @@ export const MyCalendar = () => {
           selectable={true}
           slotMinTime={"06:00:00"}
           slotMaxTime={"24:00:00"}
-          locale={"en-GB"}
+          locale={"id-ID"}
+          timeZone={"Asia/Jakarta"}
           select={handleRangeClick}
           slotLabelFormat={{
             hour: "numeric",
@@ -238,7 +240,7 @@ export const MyCalendar = () => {
                 </ListGroup>
               ))
             ) : (
-              <h6 className="text-center">No data found</h6>
+              <h6 className="text-center">Tidak ada data ditemukan</h6>
             )}
           </div>
         )}
@@ -258,9 +260,9 @@ export const MyCalendar = () => {
                 <div
                   className={isMobile || isTablet ? "width-100" : "width-45"}
                 >
-                  <h5>Booking Time</h5>
+                  <h5>Waktu Pemesanan</h5>
                   <Form.Label htmlFor="basic-url">
-                    Select Booking Date
+                    Pilih Waktu Pemesanan
                   </Form.Label>
                   <InputGroup className="mb-3">
                     <Form.Control
@@ -302,10 +304,10 @@ export const MyCalendar = () => {
                 <div
                   className={isMobile || isTablet ? "width-100" : "width-45"}
                 >
-                  <h5>Information</h5>
+                  <h5>Informasi</h5>
                   <Form.Group controlId="validationCustom01">
                     <Form.Label htmlFor="basic-url" className="mt-4">
-                      User Name
+                      Nama Pemesan
                     </Form.Label>
                     <Form.Control
                       required
@@ -315,7 +317,7 @@ export const MyCalendar = () => {
                       onChange={(e) => setUserName(e.target.value)}
                     />
                     <Form.Control.Feedback type="invalid">
-                      Please enter your name
+                      Silahkan masukan nama anda
                     </Form.Control.Feedback>
                   </Form.Group>
                 </div>
@@ -325,7 +327,7 @@ export const MyCalendar = () => {
                   className="font-small text-secondary mt-5"
                   type={"checkbox"}
                   label={
-                    "I approve orders according to the selected schedule. Field availability is subject to change at any time and can be discussed again with the ProHouse admin."
+                    "Saya menyetujui pesanan sesuai dengan jadwal yang dipilih. Ketersediaan lapangan dapat berubah sewaktu-waktu dan dapat didiskusikan kembali dengan admin Barito MiniSoccer."
                   }
                   onChange={(e) => setApprove(e.target.checked)}
                 />
