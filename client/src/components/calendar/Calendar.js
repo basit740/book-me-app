@@ -325,7 +325,7 @@ export const MyCalendar = () => {
                   className="font-small text-secondary mt-5"
                   type={"checkbox"}
                   label={
-                    "Saya menyetujui pesanan sesuai dengan jadwal yang dipilih. Ketersediaan lapangan dapat berubah sewaktu-waktu dan dapat didiskusikan kembali dengan admin Barito MiniSoccer."
+                    "Saya menyetujui pesanan sesuai dengan jadwal yang dipilih. Pesanan akan disetujui setelah mengirim pesan melalui WhatsApp dan menyertakan bukti pembayaran yang telah dilakukan. Pesanan akan dibatalkan jika tidak disertai bukti pembayaran dalam kurun waktu yang telah ditentukan."
                   }
                   onChange={(e) => setApprove(e.target.checked)}
                 />
