@@ -113,12 +113,10 @@ export const MyCalendar = () => {
     if (form.checkValidity() === false) {
       setValidated(true);
     } else {
-      const message = `"Saya ingin memesan lapangan"
-        Atas Nama: ${userName}
-        Pada Tanggal: ${date}
-        Jam : ${startTime} - ${endTime}
-        
-          `;
+      const message = `Hai saya ingin memesan lapangan
+      Atas Nama: ${userName}
+      Pada Tanggal: ${date}
+      Jam : ${startTime} - ${endTime}`;
 
       getData();
       handleClose();
@@ -138,7 +136,7 @@ export const MyCalendar = () => {
     <div className="calendar-container py-3">
       <Container className={(isMobile || isTablet) && "w-100 p-0"}>
         <h5 className="text-white mb-5 text-center">
-          K<strong>Klik dan Tahan</strong> jam yang diinginkan untuk booking
+          <span style={{ fontWeight: 'bold', textDecoration: 'underline' }}>Klik dan Tahan</span> jam yang diinginkan untuk booking
         </h5>
         <FullCalendar
           customButtons={{
