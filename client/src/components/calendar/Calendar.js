@@ -128,7 +128,7 @@ export const MyCalendar = () => {
       url += `/?text=${encodeURI(message)}`;
       window.open(url);
       setValidated(false);
-      addBooking("<b>" + eventData.startStr + "</b>", "<b>" + eventData.endStr + "</b>", "<b>" + userName + "</b>");
+      addBooking(eventData.startStr, eventData.endStr, userName);
     }
   };
 
@@ -358,7 +358,7 @@ export const MyCalendar = () => {
                 <div>
                   <strong>Tanggal Booking</strong>
                   <p className="text-secondary">
-                    {moment(selectedEvent.start).format("dddd, MMMM D, YYYY")}
+                    {moment(selectedEvent.start).locale("id").format("dddd, D MMMM YYYY")}
                   </p>
                 </div>
                 <div>
