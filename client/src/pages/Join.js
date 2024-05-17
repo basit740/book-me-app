@@ -32,23 +32,24 @@ function Join() {
             <h4 className="gray-100 mb-5">1</h4>
             <img src={require("../images/illustration/01.webp")} alt="img" />
             <AnimationTitles
-              title="Crypto Community"
+              title="Tengah Kota"
               className="text-white mb-4 mt-5 h4"
             />
             <p className="gray-50">
-              Unprecedented access to investment projects in the real economy
-              globally
+              Lokasi yang strategis di tengah kota, <span style={{ fontWeight: 'bold', textDecoration: 'underline' }}> hanya 10 menit</span> dari Simpang Lima.
             </p>
           </SwiperSlide>
           <SwiperSlide className="py-4 px-3 align-items-start flex-column">
             <h4 className="gray-100 mb-5">2</h4>
             <img src={require("../images/illustration/02.webp")} alt="img" />
             <AnimationTitles
-              title="Asset Owners"
+              title="Rumput Terbaru"
               className="text-white mb-4 mt-5 h4"
             />
             <p className="gray-50">
-              Proprietary tools for borderless capital raise
+              Menggunakan rumput Synthetic Grass Mac - Eco memberikan permukaan yang konsisten untuk bermain, 
+              dan memberikan tingkat keamanan yang tinggi bagi para pemain melalui penyerapan guncangan yang baik, 
+              sehingga mengurangi risiko cedera.
             </p>
           </SwiperSlide>
           <SwiperSlide className="py-4 px-3 align-items-start flex-column">

@@ -358,7 +358,7 @@ export const MyCalendar = () => {
                 <div>
                   <strong>Tanggal Booking</strong>
                   <p className="text-secondary">
-                    {moment(selectedEvent.start).locale("id").format("dddd, D MMMM YYYY")}
+                    {moment(selectedEvent.start).locale("id-ID").format("dddd, D MMMM YYYY")}
                   </p>
                 </div>
                 <div>
