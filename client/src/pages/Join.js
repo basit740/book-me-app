@@ -23,7 +23,7 @@ function Join() {
               slidesPerView: 3,
             },
             1198: {
-              slidesPerView: 4,
+              slidesPerView: 3,
             },
           }}
           className="mySwiper"
