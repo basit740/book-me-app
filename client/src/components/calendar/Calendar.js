@@ -113,10 +113,11 @@ export const MyCalendar = () => {
     if (form.checkValidity() === false) {
       setValidated(true);
     } else {
-      const message = `"BookMe Alert"
-        BookingDate: ${date}
-        BookingTime: ${startTime} - ${endTime}
-        User: ${userName}
+      const message = `"Saya ingin memesan lapangan"
+        Atas Nama: ${userName}
+        Pada Tanggal: ${date}
+        Jam : ${startTime} - ${endTime}
+        
           `;
 
       getData();
@@ -137,7 +138,7 @@ export const MyCalendar = () => {
     <div className="calendar-container py-3">
       <Container className={(isMobile || isTablet) && "w-100 p-0"}>
         <h5 className="text-white mb-5 text-center">
-          Klik dan tahan jam yang diinginkan untuk booking
+          K<strong>Klik dan Tahan</strong> jam yang diinginkan untuk booking
         </h5>
         <FullCalendar
           customButtons={{
@@ -251,7 +252,7 @@ export const MyCalendar = () => {
           fullscreen={isMobile || isTablet}
         >
           <Modal.Header closeButton>
-            <Modal.Title>Field Message</Modal.Title>
+            <Modal.Title>Pesan Lapangan</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form noValidate validated={validated} onSubmit={onSubmit}>
@@ -259,9 +260,9 @@ export const MyCalendar = () => {
                 <div
                   className={isMobile || isTablet ? "width-100" : "width-45"}
                 >
-                  <h5>Waktu Pemesanan</h5>
+                  <h5>Waktu Booking</h5>
                   <Form.Label htmlFor="basic-url">
-                    Pilih Waktu Pemesanan
+                    Tanggal Booking
                   </Form.Label>
                   <InputGroup className="mb-3">
                     <Form.Control
@@ -274,7 +275,7 @@ export const MyCalendar = () => {
                     </InputGroup.Text>
                   </InputGroup>
                   <Form.Label htmlFor="basic-url">
-                    Select Booking Time
+                    Jam Booking
                   </Form.Label>
                   <div className="row-justify">
                     <InputGroup className="mb-3 w-75">
@@ -312,7 +313,7 @@ export const MyCalendar = () => {
                       required
                       id="basic-url"
                       aria-describedby="basic-addon3"
-                      placeholder="Enter your name"
+                      placeholder="Masukan Nama Pemesan"
                       onChange={(e) => setUserName(e.target.value)}
                     />
                     <Form.Control.Feedback type="invalid">
@@ -333,7 +334,7 @@ export const MyCalendar = () => {
               </div>
               <hr />
               <Button variant="success" disabled={!approve} type={"submit"}>
-                <i class="fa-brands fa-whatsapp"></i>&nbsp; Message
+                <i class="fa-brands fa-whatsapp"></i>&nbsp; Pesan
               </Button>
             </Form>
           </Modal.Body>
@@ -391,11 +392,11 @@ export const MyCalendar = () => {
             <Modal.Title>Alert!!</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            This slot is already booked. Please book on a vacant slot.
+            Slot ini sudah dipesan. Silakan pesan pada slot yang kosong.
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={() => setShowAlert(false)}>
-              Close
+              Tutup
             </Button>
           </Modal.Footer>
         </Modal>
