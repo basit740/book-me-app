@@ -20,13 +20,6 @@ export const addBooking = (start, end, userName) => {
   })
     .then((response) => response.json())
     .then((json) => {
-      const bookingElements = document.querySelectorAll('.booking');
-
-      // Loop through each booking element and make it bold
-      bookingElements.forEach((element) => {
-        element.style.fontWeight = 'bold';
-      });
-      
       return json;
     })
     .catch((error) => {

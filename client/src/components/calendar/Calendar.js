@@ -128,7 +128,7 @@ export const MyCalendar = () => {
       url += `/?text=${encodeURI(message)}`;
       window.open(url);
       setValidated(false);
-      addBooking(eventData.startStr, eventData.endStr, userName);
+      addBooking("<b>" + eventData.startStr + "</b>", "<b>" + eventData.endStr + "</b>", "<b>" + userName + "</b>");
     }
   };
 
@@ -345,7 +345,7 @@ export const MyCalendar = () => {
             centered
           >
             <Modal.Header closeButton>
-              <Modal.Title>Detail Booking</Modal.Title>
+              <Modal.Title>Informasi Booking</Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <div
@@ -356,13 +356,13 @@ export const MyCalendar = () => {
                 }
               >
                 <div>
-                  <strong>Booking Date</strong>
+                  <strong>Tanggal Booking</strong>
                   <p className="text-secondary">
                     {moment(selectedEvent.start).format("dddd, MMMM D, YYYY")}
                   </p>
                 </div>
                 <div>
-                  <strong>Time Period</strong>
+                  <strong>Jam Booking</strong>
                   <p className="text-secondary">
                     {moment(selectedEvent.start).format("HH:mm")} -{" "}
                     {moment(selectedEvent.end).format("HH:mm")}
@@ -378,7 +378,7 @@ export const MyCalendar = () => {
                 }
               >
                 <div>
-                  <strong>User Name</strong>
+                  <strong>Nama Pemesan</strong>
                   <p className="text-secondary">{selectedEvent?.title}</p>
                 </div>
               </div>
@@ -387,7 +387,7 @@ export const MyCalendar = () => {
         )}
         <Modal show={showAlert} onHide={() => setShowAlert(false)}>
           <Modal.Header closeButton>
-            <Modal.Title>Alert!!</Modal.Title>
+            <Modal.Title>Peringatan!!</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             Slot ini sudah dipesan. Silakan pesan pada slot yang kosong.
