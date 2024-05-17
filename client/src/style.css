@@ -11,8 +11,8 @@ body {
 .gray-50 {
   color: #c3c5ce;
 }
-.text-red {
 
+.text-red {
   color: red;
 }
 
@@ -38,6 +38,13 @@ body {
 
 .w-min-content {
   width: min-content;
+}
+
+@media (max-width: 576px) {
+  .img-fluid {
+    width: 80%; /* Adjust as needed */
+    height: auto;
+  }
 }
 
 /* Start swiper style */

@@ -40,18 +40,19 @@ function Loading() {
           style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}
         >
           <div>
-          <Card className="bg-black-100" style={{ height: '100%', width: 'fit-content'}}>
-            <Card.Body className="p-2">
-              <div className="rounded overflow-hidden position-relative" style={{ height: '100%' }}>
-                <Card.Img
-                  variant="top"
-                  alt="img"
-                  src={require("../images/properties/poster.png")}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-              </div>
-            </Card.Body>
-          </Card>
+            <Card className="bg-black-100" style={{ height: '100%', width: 'fit-content'}}>
+              <Card.Body className="p-2">
+                <div className="rounded overflow-hidden position-relative" style={{ height: '100%' }}>
+                  <Card.Img
+                    variant="top"
+                    alt="img"
+                    src={require("../images/properties/poster.png")}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    className="img-fluid"
+                  />
+                </div>
+              </Card.Body>
+            </Card>
           </div>
         </motion.div>
       </Container>
