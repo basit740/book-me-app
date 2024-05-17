@@ -222,7 +222,7 @@ body {
 /* Start about us */
 .about .container {
   gap: 50px;
-  padding-top: 7rem;
+  padding-top: 3rem;
   overflow-x: clip;
 }
 

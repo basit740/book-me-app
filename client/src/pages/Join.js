@@ -47,24 +47,22 @@ function Join() {
               className="text-white mb-4 mt-5 h4"
             />
             <p className="gray-50">
-              Menggunakan rumput Synthetic Grass Mac - Eco memberikan permukaan yang konsisten untuk bermain, 
-              dan memberikan tingkat keamanan yang tinggi bagi para pemain melalui penyerapan guncangan yang baik, 
-              sehingga mengurangi risiko cedera.
+              Rumput Synthetic Grass Mac - Eco memberikan permukaan konsisten untuk bermain dan 
+              tingkat keamanan tinggi dengan penyerapan guncangan yang baik, mengurangi risiko cedera.
             </p>
           </SwiperSlide>
           <SwiperSlide className="py-4 px-3 align-items-start flex-column">
             <h4 className="gray-100 mb-5">3</h4>
             <img src={require("../images/illustration/03.webp")} alt="img" />
             <AnimationTitles
-              title="Registration"
+              title="Standar Fifa"
               className="text-white mb-4 mt-5 h4"
             />
             <p className="gray-50">
-              Absolute data security and maximum transparency of all
-              blockchain-based transactions
+              Menurut standar FIFA, panjang standar lapangan mini soccer harus antara 35 x 50 meter.
             </p>
           </SwiperSlide>
-          <SwiperSlide className="py-4 px-3 align-items-start flex-column">
+          {/* <SwiperSlide className="py-4 px-3 align-items-start flex-column">
             <h4 className="gray-100 mb-5">4</h4>
             <img src={require("../images/illustration/04.webp")} alt="img" />
             <AnimationTitles
@@ -74,7 +72,7 @@ function Join() {
             <p className="gray-50">
               Decentralized community-ran platform for fundraising
             </p>
-          </SwiperSlide>
+          </SwiperSlide> */}
         </Swiper>
       </Container>
     </div>
