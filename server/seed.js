@@ -18,7 +18,7 @@ mongoose.connect(dbUrl, {
 const newUser = new User({
     _id: new mongoose.Types.ObjectId(),
     username: 'admin', // Change the username as needed
-    password: 'admin123', // Change the password as needed
+    password: 'test', // Change the password as needed
     isLoggedIn: false
 });
 
