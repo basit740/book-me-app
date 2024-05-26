@@ -89,8 +89,14 @@ export const Admin = () => {
     <Container className="my-4">
       <div className="calendar-container py-3">
         <Container>
-          <h5 className="text-red my-5 text-center">
-            Click the available time to quick booking
+          <h5 className="text-white my-5 text-left">
+            Menyetujui Pesanan <br />
+            1. Klik slot time yang berwarna kuning <br />
+            2. Klik tombol "Approve" <br/>
+            <br/>
+            Menolak Pesanan <br />
+            1. Klik slot time yang berwarna kuning atau hijau <br />
+            2. Klik tombol "Reject" <br/>
           </h5>
           <FullCalendar
             customButtons={{
