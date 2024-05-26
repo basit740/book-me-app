@@ -89,7 +89,7 @@ export const Admin = () => {
     <Container className="my-4">
       <div className="calendar-container py-3">
         <Container>
-          <h5 className="text-white my-5 text-left">
+          <h5 className="text-white my-5 text-left" style={{ textAlign: 'left', alignSelf: 'flex-start' }}>
             Menyetujui Pesanan <br />
             1. Klik slot time yang berwarna <span style={{ fontWeight: 'bold', textDecoration: 'underline' , color: 'yellow'}}>kuning</span>  <br />
             2. Klik tombol "Approve" <br/>
