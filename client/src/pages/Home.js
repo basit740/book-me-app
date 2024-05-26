@@ -10,7 +10,6 @@ export const Home = () => {
   return (
     <>
       <Loading />
-      <Partners />
       <AboutUs />
       <Join />
       <Subscribe />

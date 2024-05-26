@@ -59,7 +59,7 @@ function Join() {
               className="text-white mb-4 mt-5 h4"
             />
             <p className="gray-50">
-              Menurut standar FIFA, panjang standar lapangan mini soccer harus antara 35 x 50 meter.
+              Menurut standar FIFA, panjang standar lapangan mini soccer harus antara 30 x 50 meter.
             </p>
           </SwiperSlide>
           {/* <SwiperSlide className="py-4 px-3 align-items-start flex-column">
