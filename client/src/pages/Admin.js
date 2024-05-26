@@ -91,11 +91,11 @@ export const Admin = () => {
         <Container>
           <h5 className="text-white my-5 text-left">
             Menyetujui Pesanan <br />
-            1. Klik slot time yang berwarna kuning <br />
+            1. Klik slot time yang berwarna <span style={{ fontWeight: 'bold', textDecoration: 'underline' , color: 'yellow'}}>kuning</span>  <br />
             2. Klik tombol "Approve" <br/>
             <br/>
             Menolak Pesanan <br />
-            1. Klik slot time yang berwarna kuning atau hijau <br />
+            1. Klik slot time yang berwarna <span style={{ fontWeight: 'bold', textDecoration: 'underline' , color: 'yellow'}}>kuning</span> atau <span style={{ fontWeight: 'bold', textDecoration: 'underline' , color: 'green'}}>hijau</span> <br />
             2. Klik tombol "Reject" <br/>
           </h5>
           <FullCalendar
