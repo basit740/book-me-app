@@ -26,13 +26,13 @@ function NavBar() {
         <Navbar.Collapse id="navbarScroll">
           <Nav className="me-auto my-2 my-lg-0" navbarScroll>
             <Nav.Link
-              href="/about"
+              href="#about"
               className="px-lg-3 text-white"
             >
               About Us
             </Nav.Link>
             <Nav.Link
-              href="/location"
+              href="#location"
               className="text-white"
             >
               Location
