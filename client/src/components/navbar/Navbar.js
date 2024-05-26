@@ -16,23 +16,23 @@ function NavBar() {
       <Container>
         <Navbar.Brand href="/" className="me-auto">
           <img
-              src={require("../../images/logo/logo.png")}
-              alt="logo"
-              className="mb-3"
-              style={{ width: '100px', height: 'auto' }}
-            />
+            src={require("../../images/logo/logo.png")}
+            alt="logo"
+            className="mb-3"
+            style={{ width: '100px', height: 'auto' }}
+          />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav className="me-auto my-2 my-lg-0" navbarScroll>
             <Nav.Link
-              href="https://book-me-app.vercel.app/#about"
+              href="/about"
               className="px-lg-3 text-white"
             >
               About Us
             </Nav.Link>
             <Nav.Link
-              href="https://book-me-app.vercel.app/#location"
+              href="/location"
               className="text-white"
             >
               Location
