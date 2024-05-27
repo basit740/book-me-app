@@ -175,7 +175,7 @@ export const MyCalendar = () => {
           slotMinTime={"06:00:00"}
           slotMaxTime={"25:00:00"}
           locale={"id-ID"}
-          timeZone={"Asia/Jakarta"}
+          timeZone={"local"}
           select={handleRangeClick}
           slotLabelFormat={{
             hour: "numeric",
