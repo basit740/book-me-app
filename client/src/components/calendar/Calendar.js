@@ -26,6 +26,7 @@ export const MyCalendar = () => {
   const [events, setEvents] = useState([]);
   const [validated, setValidated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const [currentWeek, setCurrentWeek] = useState(moment());
 
   useEffect(() => {
     getData();
@@ -92,13 +93,13 @@ export const MyCalendar = () => {
   };
 
   const filterEventsForCurrentWeek = (events) => {
-    const startOfWeek = moment().startOf('week');
-    const endOfWeek = moment().endOf('week');
+    const startOfWeek = currentWeek.clone().startOf('week');
+    const endOfWeek = currentWeek.clone().endOf('week');
     return events.filter(event => 
       moment(event.start).isBetween(startOfWeek, endOfWeek, null, '[]')
     );
   };
-
+  
   const groups = events.reduce((groups, game) => {
     const date = game.start.split("T")[0];
     if (!groups[date]) {
@@ -121,7 +122,7 @@ export const MyCalendar = () => {
       date,
       events: weekEvents,
     };
-  }).filter(group => group.events.length > 0);
+  }).filter(group => group.events.length > 0);  
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -148,6 +149,14 @@ export const MyCalendar = () => {
     }
   };
 
+  const handlePrevWeek = () => {
+    setCurrentWeek(currentWeek.clone().subtract(1, 'weeks'));
+  };
+
+  const handleNextWeek = () => {
+    setCurrentWeek(currentWeek.clone().add(1, 'weeks'));
+  };
+
   return (
     <div className="calendar-container py-3">
       <Container className={(isMobile || isTablet) && "w-100 p-0"}>
@@ -167,6 +176,14 @@ export const MyCalendar = () => {
               click: function () {
                 setShowTimeTable(true);
               },
+            },
+            prevWeek: {
+              text: 'Prev',
+              click: handlePrevWeek,
+            },
+            nextWeek: {
+              text: 'Next',
+              click: handleNextWeek,
             },
           }}
           views={{
@@ -213,6 +230,10 @@ export const MyCalendar = () => {
         />
         {showTimeTable && (
           <div className="back-white p-4 rounded">
+            <div className="d-flex justify-content-between mb-3">
+              <Button onClick={handlePrevWeek}>Previous Week</Button>
+              <Button onClick={handleNextWeek}>Next Week</Button>
+            </div>
             {groupArraysForCurrentWeek.length ? (
               groupArraysForCurrentWeek.map((group, index) => (
                 <ListGroup key={index}>
