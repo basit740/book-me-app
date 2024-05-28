@@ -24,7 +24,7 @@ function AboutUs() {
           </p>
           {/* <Button variant="primary ms-0">Read More</Button> */}
         </motion.div>
-        <motion.div
+        {/* <motion.div
           initial={{ x: 200 }}
           whileInView={{ x: 0 }}
           transition={{ duration: 0.8 }}
@@ -62,7 +62,7 @@ function AboutUs() {
               />
             </div>
           </div>
-        </motion.div>
+        </motion.div> */}
       </Container>
     </div>
   );
