@@ -152,7 +152,7 @@ export const MyCalendar = () => {
   const handlePrevWeek = () => {
     setCurrentWeek(currentWeek.clone().subtract(1, 'weeks'));
   };
-
+  
   const handleNextWeek = () => {
     setCurrentWeek(currentWeek.clone().add(1, 'weeks'));
   };
@@ -176,14 +176,6 @@ export const MyCalendar = () => {
               click: function () {
                 setShowTimeTable(true);
               },
-            },
-            prevWeek: {
-              text: 'Prev',
-              click: handlePrevWeek,
-            },
-            nextWeek: {
-              text: 'Next',
-              click: handleNextWeek,
             },
           }}
           views={{
@@ -227,13 +219,17 @@ export const MyCalendar = () => {
             setSelectedEvent(arg.event);
           }}
           selectLongPressDelay={500}
+          datesSet={(arg) => {
+            if (showTimeTable) {
+              const newCurrentWeek = moment(arg.start);
+              if (!newCurrentWeek.isSame(currentWeek, 'week')) {
+                setCurrentWeek(newCurrentWeek);
+              }
+            }
+          }}
         />
         {showTimeTable && (
           <div className="back-white p-4 rounded">
-            <div className="d-flex justify-content-between mb-3">
-              <Button onClick={handlePrevWeek}>Previous Week</Button>
-              <Button onClick={handleNextWeek}>Next Week</Button>
-            </div>
             {groupArraysForCurrentWeek.length ? (
               groupArraysForCurrentWeek.map((group, index) => (
                 <ListGroup key={index}>
