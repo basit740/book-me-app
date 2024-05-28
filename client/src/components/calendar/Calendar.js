@@ -266,7 +266,7 @@ export const MyCalendar = () => {
                     <Form.Control
                       id="basic-url"
                       aria-describedby="basic-addon3"
-                      value={date}
+                      defaultValue={date}
                     />
                     <InputGroup.Text id="basic-addon3">
                       <i class="fa fa-calendar" aria-hidden="true"></i>
@@ -280,7 +280,7 @@ export const MyCalendar = () => {
                       <Form.Control
                         id="basic-url"
                         aria-describedby="basic-addon3"
-                        value={startTime}
+                        defaultValue={startTime}
                       />
                       <InputGroup.Text id="basic-addon3">
                         <i class="fa-regular fa-clock"></i>
@@ -291,7 +291,7 @@ export const MyCalendar = () => {
                       <Form.Control
                         id="basic-url"
                         aria-describedby="basic-addon3"
-                        value={endTime}
+                        defaultValue={endTime}
                       />
                       <InputGroup.Text id="basic-addon3">
                         <i class="fa-regular fa-clock"></i>
