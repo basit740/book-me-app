@@ -220,7 +220,7 @@ export const MyCalendar = () => {
                         {moment(event.end).format("HH:mm")}
                         <div className="d-flex gap-2 align-items-center">
                           <i
-                            class="fa-solid fa-circle"
+                            className="fa-solid fa-circle"
                             style={{
                               color:
                                 event.bookingStatus === "pending"
@@ -270,7 +270,7 @@ export const MyCalendar = () => {
                       readOnly
                     />
                     <InputGroup.Text id="basic-addon3">
-                      <i class="fa fa-calendar" aria-hidden="true"></i>
+                      <i className="fa fa-calendar" aria-hidden="true"></i>
                     </InputGroup.Text>
                   </InputGroup>
                   <Form.Label htmlFor="basic-url">
@@ -285,7 +285,7 @@ export const MyCalendar = () => {
                         readOnly
                       />
                       <InputGroup.Text id="basic-addon3">
-                        <i class="fa-regular fa-clock"></i>
+                        <i className="fa-regular fa-clock"></i>
                       </InputGroup.Text>
                     </InputGroup>
                     <p className="w-25 text-center">-</p>
@@ -297,7 +297,7 @@ export const MyCalendar = () => {
                         readOnly
                       />
                       <InputGroup.Text id="basic-addon3">
-                        <i class="fa-regular fa-clock"></i>
+                        <i className="fa-regular fa-clock"></i>
                       </InputGroup.Text>
                     </InputGroup>
                   </div>
@@ -357,7 +357,7 @@ export const MyCalendar = () => {
               </div>
               <hr />
               <Button variant="success" disabled={!approve} type={"submit"}>
-                <i class="fa-brands fa-whatsapp"></i>&nbsp; Pesan
+                <i className="fa-brands fa-whatsapp"></i>&nbsp; Pesan
               </Button>
             </Form>
           </Modal.Body>
