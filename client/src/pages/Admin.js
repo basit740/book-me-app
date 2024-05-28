@@ -131,6 +131,10 @@ export const Admin = () => {
             dayHeaderClassNames={"back-white"}
             viewClassNames={showTimeTable ? "display-none" : "back-white"}
             allDaySlot={false}
+            slotMinTime={"06:00:00"}
+            slotMaxTime={"24:00:00"}
+            locale={"id-ID"}
+            timeZone={"local"}
             slotLabelFormat={{
               hour: "numeric",
               minute: "2-digit",
