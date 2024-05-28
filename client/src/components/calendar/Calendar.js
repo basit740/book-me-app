@@ -173,7 +173,7 @@ export const MyCalendar = () => {
           allDaySlot={false}
           selectable={true}
           slotMinTime={"06:00:00"}
-          slotMaxTime={"25:00:00"}
+          slotMaxTime={"24:00:00"}
           locale={"id-ID"}
           timeZone={"local"}
           select={handleRangeClick}
