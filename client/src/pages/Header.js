@@ -25,6 +25,9 @@ function Loading() {
           <p className="gray-90 mt-3 fs-5">
             Lapangan Mini Soccer Terbaru di Tengah Kota Semarang
           </p>
+          <p className="text-white fw-light">
+            <a href="https://wa.me/6287711569168">+62 877-1156-9168</a>
+          </p>
           <Button
             className="m-0 my-3 px-5 py-2 fs-5 fw-bold"
             onClick={() => navigate("/calendar")}
