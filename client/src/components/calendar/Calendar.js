@@ -303,7 +303,23 @@ export const MyCalendar = () => {
                   className={isMobile || isTablet ? "width-100" : "width-45"}
                 >
                   <h5>Informasi</h5>
-                  <Form.Group controlId="validationCustom01">
+                  {/* <Form.Group controlId="validationCustom01">
+                    <Form.Label htmlFor="basic-url" className="mt-4">
+                      Nama Pemesan
+                    </Form.Label>
+                    <Form.Control
+                      required
+                      id="basic-url"
+                      aria-describedby="basic-addon3"
+                      placeholder="Masukan Nama Pemesan"
+                      onChange={(e) => setUserName(e.target.value)}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Silahkan masukan nama anda
+                    </Form.Control.Feedback>
+                  </Form.Group> */}
+
+                  <Form.Group>
                     <Form.Label htmlFor="basic-url" className="mt-4">
                       Nama Pemesan
                     </Form.Label>
@@ -318,6 +334,8 @@ export const MyCalendar = () => {
                       Silahkan masukan nama anda
                     </Form.Control.Feedback>
                   </Form.Group>
+
+
                   <br/>
                   <h6>Menerima transaksi hanya melalui transfer ke rekening</h6>
                   <h6>BCA a.n. Susanto Suhadi 409-0656-703</h6>
