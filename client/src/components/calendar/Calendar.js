@@ -267,6 +267,7 @@ export const MyCalendar = () => {
                       id="basic-url"
                       aria-describedby="basic-addon3"
                       defaultValue={date}
+                      readOnly
                     />
                     <InputGroup.Text id="basic-addon3">
                       <i class="fa fa-calendar" aria-hidden="true"></i>
@@ -281,6 +282,7 @@ export const MyCalendar = () => {
                         id="basic-url"
                         aria-describedby="basic-addon3"
                         defaultValue={startTime}
+                        readOnly
                       />
                       <InputGroup.Text id="basic-addon3">
                         <i class="fa-regular fa-clock"></i>
@@ -292,6 +294,7 @@ export const MyCalendar = () => {
                         id="basic-url"
                         aria-describedby="basic-addon3"
                         defaultValue={endTime}
+                        readOnly
                       />
                       <InputGroup.Text id="basic-addon3">
                         <i class="fa-regular fa-clock"></i>
