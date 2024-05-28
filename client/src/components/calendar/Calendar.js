@@ -91,6 +91,14 @@ export const MyCalendar = () => {
     }
   };
 
+  const filterEventsForCurrentWeek = (events) => {
+    const startOfWeek = moment().startOf('week');
+    const endOfWeek = moment().endOf('week');
+    return events.filter(event => 
+      moment(event.start).isBetween(startOfWeek, endOfWeek, null, '[]')
+    );
+  };
+
   const groups = events.reduce((groups, game) => {
     const date = game.start.split("T")[0];
     if (!groups[date]) {
@@ -106,6 +114,14 @@ export const MyCalendar = () => {
       events: groups[date],
     };
   });
+
+  const groupArraysForCurrentWeek = Object.keys(groups).map((date) => {
+    const weekEvents = filterEventsForCurrentWeek(groups[date]);
+    return {
+      date,
+      events: weekEvents,
+    };
+  }).filter(group => group.events.length > 0);
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -197,8 +213,8 @@ export const MyCalendar = () => {
         />
         {showTimeTable && (
           <div className="back-white p-4 rounded">
-            {groupArrays.length ? (
-              groupArrays.map((group, index) => (
+            {groupArraysForCurrentWeek.length ? (
+              groupArraysForCurrentWeek.map((group, index) => (
                 <ListGroup key={index}>
                   <ListGroup.Item className="bg-light">
                     <div className="d-flex justify-content-between align-items-center">
