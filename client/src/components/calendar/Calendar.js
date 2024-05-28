@@ -318,6 +318,8 @@ export const MyCalendar = () => {
                       Silahkan masukan nama anda
                     </Form.Control.Feedback>
                   </Form.Group>
+                  <h6>Menerima transaksi hanya melalui transfer ke rekening BCA a.n. Susanto Suhadi 409-0656-703</h6>
+                  <h6>atau pembayaran tunai.</h6>
                 </div>
               </div>
               <div className={isMobile || isTablet ? "width-100" : "w-50"}>
