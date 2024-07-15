@@ -148,15 +148,7 @@ export const MyCalendar = () => {
       addBooking(eventData.startStr, eventData.endStr, userName);
     }
   };
-
-  const handlePrevWeek = () => {
-    setCurrentWeek(currentWeek.clone().subtract(1, 'weeks'));
-  };
   
-  const handleNextWeek = () => {
-    setCurrentWeek(currentWeek.clone().add(1, 'weeks'));
-  };
-
   return (
     <div className="calendar-container py-3">
       <Container className={(isMobile || isTablet) && "w-100 p-0"}>
