@@ -12,6 +12,21 @@ import { isMobile, isTablet } from "react-device-detect";
 import "./Calendar.css";
 import { addBooking, getBooking } from "../../services/bookings";
 
+const PRICE_RATES = {
+  weekday: {
+    morning: 400000,
+    daytime: 250000,
+    evening: 400000,
+    night: 450000,
+  },
+  weekend: {
+    morning: 450000,
+    daytime: 250000,
+    evening: 450000,
+    night: 500000,
+  },
+};
+
 export const MyCalendar = () => {
   const [show, setShow] = useState(false);
   const [date, setDate] = useState(null);
@@ -21,6 +36,7 @@ export const MyCalendar = () => {
   const [openEvent, setOpenEvent] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [userName, setUserName] = useState(null);
+  const [price, setPrice] = useState(null);
   const [approve, setApprove] = useState(false);
   const [eventData, setEventData] = useState(null);
   const [events, setEvents] = useState([]);
@@ -54,6 +70,54 @@ export const MyCalendar = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const calculatePrice = (start, end) => {
+    const startMoment = moment(start);
+    const endMoment = moment(end);
+    const duration = moment.duration(endMoment.diff(startMoment));
+    const hours = duration.asHours();
+    let total = 0;
+
+    for (let i = 0; i < hours; i++) {
+      const currentHour = startMoment.clone().add(i, "hours");
+      const day = currentHour.day();
+      const hour = currentHour.hour();
+
+      const isWeekend = day === 5 || day === 6 || day === 0; // Friday, Saturday, Sunday
+      const rates = isWeekend ? PRICE_RATES.weekend : PRICE_RATES.weekday;
+
+      let rate = 0;
+      if (hour >= 6 && hour < 10) {
+        rate = rates.morning;
+      } else if (hour >= 10 && hour < 16) {
+        rate = rates.daytime;
+      } else if (hour >= 16 && hour < 18) {
+        rate = rates.evening;
+      } else if (hour >= 18 && hour < 24) {
+        rate = rates.night;
+      }
+
+      total += rate;
+    }
+
+    return total;
+  };
+
+  const formatPrice = (price) => {
+    const discountedPrice = price === 250000 ? price : price * 0.9;
+    const formattedPrice = new Intl.NumberFormat('id-ID', {
+      minimumFractionDigits: 0
+    }).format(price);
+    const formattedDiscountedPrice = new Intl.NumberFormat('id-ID', {
+      minimumFractionDigits: 0
+    }).format(discountedPrice);
+
+    if (price === 250000) {
+      return `Rp. ${formattedPrice}`;
+    } else {
+      return `Rp. <s>${formattedPrice}</s> -> Rp. ${formattedDiscountedPrice}`;
+    }
+  };
+
   function isAnOverlapEvent(eventStartDay, eventEndDay) {
     for (let i = 0; i < events.length; i++) {
       const eventA = events[i];
@@ -63,16 +127,14 @@ export const MyCalendar = () => {
         console.log("start-time in between any of the events");
         return true;
       }
-      //end-time in between any of the events
+      // end-time in between any of the events
       if (eventEndDay > eventA.start && eventEndDay < eventA.end) {
         console.log("end-time in between any of the events");
         return true;
       }
-      //any of the events in between/on the start-time and end-time
+      // any of the events in between/on the start-time and end-time
       if (eventStartDay <= eventA.start && eventEndDay >= eventA.end) {
-        console.log(
-          "any of the events in between/on the start-time and end-time"
-        );
+        console.log("any of the events in between/on the start-time and end-time");
         return true;
       }
     }
@@ -87,19 +149,20 @@ export const MyCalendar = () => {
       setDate(moment(arg.startStr).format("DD-MM-YYYY"));
       setStartTime(moment(arg.startStr).format("HH:mm"));
       setEndTime(moment(arg.endStr).format("HH:mm"));
+      setPrice(calculatePrice(arg.startStr, arg.endStr));
       setEventData(arg);
       handleShow();
     }
   };
 
   const filterEventsForCurrentWeek = (events) => {
-    const startOfWeek = currentWeek.clone().startOf('week');
-    const endOfWeek = currentWeek.clone().endOf('week');
-    return events.filter(event => 
-      moment(event.start).isBetween(startOfWeek, endOfWeek, null, '[]')
+    const startOfWeek = currentWeek.clone().startOf("week");
+    const endOfWeek = currentWeek.clone().endOf("week");
+    return events.filter((event) =>
+      moment(event.start).isBetween(startOfWeek, endOfWeek, null, "[]")
     );
   };
-  
+
   const groups = events.reduce((groups, game) => {
     const date = game.start.split("T")[0];
     if (!groups[date]) {
@@ -116,13 +179,15 @@ export const MyCalendar = () => {
     };
   });
 
-  const groupArraysForCurrentWeek = Object.keys(groups).map((date) => {
-    const weekEvents = filterEventsForCurrentWeek(groups[date]);
-    return {
-      date,
-      events: weekEvents,
-    };
-  }).filter(group => group.events.length > 0);  
+  const groupArraysForCurrentWeek = Object.keys(groups)
+    .map((date) => {
+      const weekEvents = filterEventsForCurrentWeek(groups[date]);
+      return {
+        date,
+        events: weekEvents,
+      };
+    })
+    .filter((group) => group.events.length > 0);
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -133,7 +198,8 @@ export const MyCalendar = () => {
       const message = `Hai saya ingin memesan lapangan
       Atas Nama: ${userName}
       Pada Tanggal: ${date}
-      Jam : ${startTime} - ${endTime}`;
+      Jam : ${startTime} - ${endTime}
+      Harga: ${formatPrice(price)}`;
 
       getData();
       handleClose();
@@ -145,15 +211,18 @@ export const MyCalendar = () => {
       url += `/?text=${encodeURI(message)}`;
       window.open(url);
       setValidated(false);
-      addBooking(eventData.startStr, eventData.endStr, userName);
+      addBooking(eventData.startStr, eventData.endStr, userName, price); // Ensure the addBooking function can handle the price parameter
     }
   };
-  
+
   return (
     <div className="calendar-container py-3">
       <Container className={(isMobile || isTablet) && "w-100 p-0"}>
         <h5 className="text-white mb-5 text-center">
-          <span style={{ fontWeight: 'bold', textDecoration: 'underline' , color: 'red'}}>Tahan dan Block</span> jam yang diinginkan untuk booking
+          <span style={{ fontWeight: "bold", textDecoration: "underline", color: "red" }}>
+            Tahan dan Block
+          </span>{" "}
+          jam yang diinginkan untuk booking
         </h5>
         <FullCalendar
           customButtons={{
@@ -177,9 +246,7 @@ export const MyCalendar = () => {
             },
           }}
           plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
-          initialView={
-            isMobile || isTablet ? "timeGridThreeDay" : "timeGridWeek"
-          }
+          initialView={isMobile || isTablet ? "timeGridThreeDay" : "timeGridWeek"}
           headerToolbar={{
             left: "today prev,next",
             center: "title",
@@ -214,7 +281,7 @@ export const MyCalendar = () => {
           datesSet={(arg) => {
             if (showTimeTable) {
               const newCurrentWeek = moment(arg.start);
-              if (!newCurrentWeek.isSame(currentWeek, 'week')) {
+              if (!newCurrentWeek.isSame(currentWeek, "week")) {
                 setCurrentWeek(newCurrentWeek);
               }
             }
@@ -241,8 +308,7 @@ export const MyCalendar = () => {
                       className="list-item"
                     >
                       <div className="d-flex gap-5 text-secondary align-items-center my-3">
-                        {moment(event.start).format("HH:mm")} -{" "}
-                        {moment(event.end).format("HH:mm")}
+                        {moment(event.start).format("HH:mm")} - {moment(event.end).format("HH:mm")}
                         <div className="d-flex gap-2 align-items-center">
                           <i
                             className="fa-solid fa-circle"
@@ -280,13 +346,9 @@ export const MyCalendar = () => {
           <Modal.Body>
             <Form noValidate validated={validated} onSubmit={onSubmit}>
               <div className={isMobile || isTablet ? "row-col" : "row-justify"}>
-                <div
-                  className={isMobile || isTablet ? "width-100" : "width-45"}
-                >
+                <div className={isMobile || isTablet ? "width-100" : "width-45"}>
                   <h5>Waktu Booking</h5>
-                  <Form.Label htmlFor="basic-url">
-                    Tanggal Booking
-                  </Form.Label>
+                  <Form.Label htmlFor="basic-url">Tanggal Booking</Form.Label>
                   <InputGroup className="mb-3">
                     <Form.Control
                       id="basic-url"
@@ -298,9 +360,7 @@ export const MyCalendar = () => {
                       <i className="fa fa-calendar" aria-hidden="true"></i>
                     </InputGroup.Text>
                   </InputGroup>
-                  <Form.Label htmlFor="basic-url">
-                    Jam Booking
-                  </Form.Label>
+                  <Form.Label htmlFor="basic-url">Jam Booking</Form.Label>
                   <div className="row-justify">
                     <InputGroup className="mb-3 w-75">
                       <Form.Control
@@ -327,26 +387,8 @@ export const MyCalendar = () => {
                     </InputGroup>
                   </div>
                 </div>
-                <div
-                  className={isMobile || isTablet ? "width-100" : "width-45"}
-                >
+                <div className={isMobile || isTablet ? "width-100" : "width-45"}>
                   <h5>Informasi</h5>
-                  {/* <Form.Group controlId="validationCustom01">
-                    <Form.Label htmlFor="basic-url" className="mt-4">
-                      Nama Pemesan
-                    </Form.Label>
-                    <Form.Control
-                      required
-                      id="basic-url"
-                      aria-describedby="basic-addon3"
-                      placeholder="Masukan Nama Pemesan"
-                      onChange={(e) => setUserName(e.target.value)}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      Silahkan masukan nama anda
-                    </Form.Control.Feedback>
-                  </Form.Group> */}
-
                   <Form.Group>
                     <Form.Label htmlFor="basic-url" className="mt-4">
                       Nama Pemesan
@@ -362,16 +404,25 @@ export const MyCalendar = () => {
                       Silahkan masukan nama anda
                     </Form.Control.Feedback>
                   </Form.Group>
-
-
-                  <br/>
+                  <Form.Group>
+                    <Form.Label htmlFor="basic-url" className="mt-4">
+                      Harga
+                    </Form.Label>
+                    <InputGroup className="mb-3">
+                      <div
+                        dangerouslySetInnerHTML={{ __html: formatPrice(price) }}
+                        style={{ color: "red" }}
+                      />
+                    </InputGroup>
+                  </Form.Group>
+                  <br />
                   <h6>Menerima transaksi hanya melalui transfer ke rekening</h6>
                   <h6>BCA a.n. Susanto Suhadi 409-0656-703</h6>
                   <h6>atau pembayaran tunai.</h6>
                 </div>
               </div>
               <div className={isMobile || isTablet ? "width-100" : "w-50"}>
-                <Form.Check // prettier-ignore
+                <Form.Check
                   className="font-small text-secondary mt-5"
                   type={"checkbox"}
                   label={
@@ -414,8 +465,7 @@ export const MyCalendar = () => {
                 <div>
                   <strong>Jam Booking</strong>
                   <p className="text-secondary">
-                    {moment(selectedEvent.start).format("HH:mm")} -{" "}
-                    {moment(selectedEvent.end).format("HH:mm")}
+                    {moment(selectedEvent.start).format("HH:mm")} - {moment(selectedEvent.end).format("HH:mm")}
                   </p>
                 </div>
               </div>
@@ -439,9 +489,7 @@ export const MyCalendar = () => {
           <Modal.Header closeButton>
             <Modal.Title>Peringatan!!</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
-            Slot ini sudah dipesan. Silakan pesan pada slot yang kosong.
-          </Modal.Body>
+          <Modal.Body>Slot ini sudah dipesan. Silakan pesan pada slot yang kosong.</Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={() => setShowAlert(false)}>
               Tutup
