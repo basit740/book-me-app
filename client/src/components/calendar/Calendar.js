@@ -277,7 +277,7 @@ export const MyCalendar = () => {
             setOpenEvent(true);
             setSelectedEvent(arg.event);
           }}
-          selectLongPressDelay={500}
+          selectLongPressDelay={250}
           datesSet={(arg) => {
             if (showTimeTable) {
               const newCurrentWeek = moment(arg.start);
