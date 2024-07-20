@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 function Loading() {
   const navigate = useNavigate();
-  // Like button of properties
+
   function like(e) {
     return e.target.classList.value === "fa-regular fa-heart like"
       ? (e.target.classList.value = "fa-solid fa-heart like text-danger")
@@ -25,9 +25,20 @@ function Loading() {
           <p className="gray-90 mt-3 fs-5">
             Lapangan Mini Soccer Terbaru di Tengah Kota Semarang
           </p>
-          <p className="text-white fw-normal">
-            Phone: <a href="https://wa.me/6287711569168">0877-1156-9168 </a>
+          <p className="text-white fw-normal mt-3">
+            Phone: <a href="https://wa.me/6287711569168" className="text-white">0877-1156-9168</a>
           </p>
+          <div className="promo bg-danger text-white p-3 rounded mt-2 d-flex justify-content-center align-items-center" style={{ height: '60px' }}>
+            <motion.p
+              initial={{ scale: 1 }}
+              animate={{ scale: [1, 1.1, 1], opacity: [1, 0.9, 1] }}
+              transition={{ repeat: Infinity, duration: 1 }}
+              className="m-0 fs-4 fw-bold text-center"
+            >
+              10% Off Sampai December!
+            </motion.p>
+          </div>
+          <br/>
           <Button
             className="m-0 my-3 px-5 py-2 fs-5 fw-bold"
             onClick={() => navigate("/calendar")}
