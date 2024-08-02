@@ -15,13 +15,13 @@ import { addBooking, getBooking } from "../../services/bookings";
 const PRICE_RATES = {
   weekday: {
     morning: 400000,
-    daytime: 250000,
+    daytime: 300000,
     evening: 400000,
     night: 450000,
   },
   weekend: {
     morning: 450000,
-    daytime: 250000,
+    daytime: 300000,
     evening: 450000,
     night: 500000,
   },
