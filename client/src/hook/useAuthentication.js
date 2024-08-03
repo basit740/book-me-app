@@ -1,5 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const authContext = createContext();
 
@@ -21,12 +20,12 @@ const useProvideAuth = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   let headers = new Headers();
-
   headers.append("Content-Type", "application/json");
   headers.append("Accept", "application/json");
   headers.append("Origin", "*");
 
   const getUser = () => {
+    setIsLoading(true);
     fetch(`${BaseUrl}user/get_admin`, {
       mode: "cors",
       method: "GET",
@@ -42,9 +41,11 @@ const useProvideAuth = () => {
           setIsLoggedIn(false);
         }
         setErrors(null);
+        setIsLoading(false);
       })
       .catch((error) => {
         setErrors(error);
+        setIsLoading(false);
       });
   };
 
@@ -69,6 +70,7 @@ const useProvideAuth = () => {
       })
       .catch((error) => {
         setErrors(error);
+        setIsLoading(false);
       });
   };
 
@@ -84,7 +86,7 @@ const useProvideAuth = () => {
       .then((json) => {
         if (json.type === 200) {
           setUser(null);
-          setIsLoggedIn(json.user.isLoggedIn);
+          setIsLoggedIn(false);
           setErrors(null);
         } else {
           setErrors(json);
@@ -93,8 +95,27 @@ const useProvideAuth = () => {
       })
       .catch((error) => {
         setErrors(error);
+        setIsLoading(false);
       });
   };
+
+  useEffect(() => {
+    getUser();
+
+    // Add event listener to handle user leaving the page
+    const handleBeforeUnload = () => {
+      if (user && isLoggedIn) {
+        signOut(user._id);
+      }
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [user, isLoggedIn]);
 
   return {
     signIn,
