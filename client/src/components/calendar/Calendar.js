@@ -432,7 +432,12 @@ export const MyCalendar = () => {
                 />
               </div>
               <hr />
-              <Button variant="success" disabled={!approve} type={"submit"}>
+              <Button 
+                variant="success" 
+                disabled={!approve} 
+                type="submit"
+                style={{ width: '160px', height: '60px', fontSize: '20px', padding: '10px' }}
+              >
                 <i className="fa-brands fa-whatsapp"></i>&nbsp; Pesan
               </Button>
             </Form>
