@@ -421,7 +421,7 @@ export const MyCalendar = () => {
                   <h6>atau pembayaran tunai.</h6>
                 </div>
               </div>
-              <div className={isMobile || isTablet ? "width-100" : "w-50"}>
+              {/* <div className={isMobile || isTablet ? "width-100" : "w-50"}>
                 <Form.Check
                   className="font-small text-secondary mt-5"
                   type={"checkbox"}
@@ -430,11 +430,11 @@ export const MyCalendar = () => {
                   }
                   onChange={(e) => setApprove(e.target.checked)}
                 />
-              </div>
+              </div> */}
               <hr />
               <Button 
                 variant="success" 
-                disabled={!approve} 
+                // disabled={!approve} 
                 type="submit"
                 style={{ width: '160px', height: '60px', fontSize: '20px', padding: '10px' }}
               >
