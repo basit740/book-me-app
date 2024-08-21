@@ -201,8 +201,10 @@ export const MyCalendar = () => {
       Jam : ${startTime} - ${endTime}
       Harga: ${formatPrice(price)}
       
-      Menerima transaksi bisa melalui transfer ke rekening
+      DP Rp 200.000
+      Transaksi bisa melalui transfer ke rekening
       BCA a.n. Susanto Suhadi 409-0656-703`;
+      
       getData();
       handleClose();
       let number = process.env.REACT_APP_TEST_PHONE_NUMBER.replace(
