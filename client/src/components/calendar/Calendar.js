@@ -189,51 +189,35 @@ export const MyCalendar = () => {
     })
     .filter((group) => group.events.length > 0);
 
-    const onSubmit = (event) => {
-      event.preventDefault();
-      const form = event.currentTarget;
-    
-      if (form.checkValidity() === false) {
-        setValidated(true);
-      } else {
-        // Escape any special HTML characters in userName
-        const escapeHTML = (str) => {
-          return str.replace(/&/g, "&amp;")
-                    .replace(/</g, "&lt;")
-                    .replace(/>/g, "&gt;")
-                    .replace(/"/g, "&quot;")
-                    .replace(/'/g, "&#039;");
-        };
-    
-        const escapedUserName = escapeHTML(userName);
-    
-        const message = `Hai saya ingin memesan lapangan
-        Atas Nama: ${escapedUserName}
-        Pada Tanggal: ${date}
-        Jam : ${startTime} - ${endTime}
-        Harga: ${formatPrice(price)}
-        
-        DP Rp 200.000
-        Transaksi bisa melalui transfer ke rekening BCA a.n. Susanto Suhadi 
-        409-0656-703`;
-        
-        getData();
-        handleClose();
-    
-        let number = process.env.REACT_APP_TEST_PHONE_NUMBER.replace(
-          /[^\w\s]/gi,
-          ""
-        ).replace(/ /g, "");
-        
-        let url = `${process.env.REACT_APP_WHATSAPP_URL}/${number}`;
-        url += `/?text=${encodeURIComponent(message)}`; // Use encodeURIComponent instead of encodeURI for full message encoding
-        window.open(url);
-    
-        setValidated(false);
-    
-        addBooking(eventData.startStr, eventData.endStr, escapedUserName, price); // Use escapedUserName here too
-      }
-    };
+  const onSubmit = (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      setValidated(true);
+    } else {
+      const message = `Hai saya ingin memesan lapangan
+      Atas Nama: ${userName}
+      Pada Tanggal: ${date}
+      Jam : ${startTime} - ${endTime}
+      Harga: ${formatPrice(price)}
+      
+      DP Rp 200.000
+      Transaksi bisa melalui transfer ke rekening BCA a.n. Susanto Suhadi 
+      409-0656-703`;
+      
+      getData();
+      handleClose();
+      let number = process.env.REACT_APP_TEST_PHONE_NUMBER.replace(
+        /[^\w\s]/gi,
+        ""
+      ).replace(/ /g, "");
+      let url = `${process.env.REACT_APP_WHATSAPP_URL}/${number}`;
+      url += `/?text=${encodeURI(message)}`;
+      window.open(url);
+      setValidated(false);
+      addBooking(eventData.startStr, eventData.endStr, userName, price); // Ensure the addBooking function can handle the price parameter
+    }
+  };
 
   return (
     <div className="calendar-container py-3">
@@ -441,16 +425,6 @@ export const MyCalendar = () => {
                   <h6>atau pembayaran tunai.</h6>
                 </div>
               </div>
-              {/* <div className={isMobile || isTablet ? "width-100" : "w-50"}>
-                <Form.Check
-                  className="font-small text-secondary mt-5"
-                  type={"checkbox"}
-                  label={
-                    "Saya menyetujui pesanan sesuai dengan jadwal yang dipilih. Pesanan akan disetujui setelah mengirim pesan melalui WhatsApp dan menyertakan bukti pembayaran yang telah dilakukan. Pesanan akan dibatalkan jika tidak disertai bukti pembayaran dalam kurun waktu yang telah ditentukan."
-                  }
-                  onChange={(e) => setApprove(e.target.checked)}
-                />
-              </div> */}
               <hr />
               <Button 
                 variant="success" 
