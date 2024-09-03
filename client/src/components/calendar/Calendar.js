@@ -179,6 +179,11 @@ export const MyCalendar = () => {
     };
   });
 
+  const isValidUserName = (name) => {
+    const regex = /^[a-zA-Z0-9 ]*$/;
+    return regex.test(name);
+  };  
+
   const groupArraysForCurrentWeek = Object.keys(groups)
     .map((date) => {
       const weekEvents = filterEventsForCurrentWeek(groups[date]);
@@ -402,7 +407,14 @@ export const MyCalendar = () => {
                       id="basic-url"
                       aria-describedby="basic-addon3"
                       placeholder="Masukan Nama Pemesan"
-                      onChange={(e) => setUserName(e.target.value)}
+                      onChange={(e) => {
+                        const name = e.target.value;
+                        if (isValidUserName(name)) {
+                          setUserName(name);
+                        } else {
+                          alert("Nama hanya boleh mengandung huruf, angka, dan spasi.");
+                        }
+                      }}
                     />
                     <Form.Control.Feedback type="invalid">
                       Silahkan masukan nama anda
